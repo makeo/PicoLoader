@@ -1,0 +1,79 @@
+.define public pin_d0 8
+.define public pin_d1 9
+.define public pin_d2 10
+.define public pin_d3 11
+.define public pin_d4 12
+.define public pin_d5 13
+.define public pin_d6 14
+.define public pin_d7 15
+
+.define public pin_gc_dir 0
+.define public pin_dvd_err 1
+.define public pin_dvd_cover 2
+.define public pin_gc_reset 3
+
+.define public pin_dvd_dir 4
+.define public pin_gc_err 5
+.define public pin_gc_cover 6
+.define public pin_dvd_reset 7
+
+.define public pin_hstrb 17
+
+.define public pin_dvd_brk 18
+.define public pin_gc_brk 19
+
+.define public pin_dvd_dstrb 20
+.define public pin_gc_dstrb 21
+
+
+.program passthrough
+mov pins, pins
+
+
+.program dir
+.side_set 1 opt
+; output
+mov osr, !null
+wait 1 gpio pin_gc_dir
+out pindirs, 8
+irq 1
+; input
+mov osr, null
+wait 0 gpio pin_gc_dir
+out pindirs, 8 side 1
+irq 0 side 1
+; force dstrb high until irq resets it
+.wrap_target
+public disable:
+mov osr, null side 1
+out pindirs, 8 side 1
+.wrap
+
+
+.program bus_recv
+start:
+wait 0 gpio pin_gc_dir
+wait 0 gpio pin_hstrb
+wait 1 gpio pin_hstrb
+in pins, 8
+; clear error if we received 12 bytes
+mov x, !status
+jmp !x start
+set pins 1
+
+
+.program bus_send
+.side_set 1 opt
+wait 0 gpio pin_gc_dir side 0
+; set dstrb when 4 bytes are remaining
+set x, 8 side 0
+wait_loop:
+wait 0 gpio pin_hstrb side 0
+wait 1 gpio pin_hstrb side 0
+jmp x-- wait_loop side 0
+; send loop
+.wrap_target
+wait 1 gpio pin_gc_dir side 1 [1]
+out pins, 8 side 1
+nop side 0 [2]
+.wrap
