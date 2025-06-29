@@ -98,7 +98,6 @@ void dvd_drv_init_gpios() {
         gpio_set_oeover(inputs[i], GPIO_OVERRIDE_LOW);
         pio_sm_set_consecutive_pindirs(pio0, 0, inputs[i], 1, false);
         gpio_set_pulls(inputs[i], false, false);
-        //pio0->input_sync_bypass |= 1 << inputs[i];
     }
     gpio_set_function(pin_dvd_dstrb, GPIO_FUNC_GPCK);
     gpio_set_pulls(pin_gc_reset, true, false);
@@ -122,7 +121,6 @@ void dvd_drv_init_gpios() {
         gpio_set_pulls(bidirectionals[i], false, false);
         gpio_set_slew_rate(bidirectionals[i], GPIO_SLEW_RATE_FAST);
         gpio_set_drive_strength(bidirectionals[i], GPIO_DRIVE_STRENGTH_12MA);
-        //pio0->input_sync_bypass |= 1 << bidirectionals[i];
     }
 
     // open drain gpios
@@ -243,8 +241,6 @@ void dvd_drv_gpio_irq(void) {
         // force dstrb high until we are done
         gpio_set_outover(pin_gc_dstrb, GPIO_OVERRIDE_HIGH);
 
-        printf("rst low\n");
-
         // reset error
         pio_sm_exec(pio0, PIO_RECV_SM, pio_encode_set(pio_pins, 1));
 
@@ -253,7 +249,6 @@ void dvd_drv_gpio_irq(void) {
         gpio_set_irq_enabled(pin_gc_reset, GPIO_IRQ_LEVEL_HIGH, true);
 
     } else if (reset_status & GPIO_IRQ_LEVEL_HIGH) {
-        printf("rst high\n");
         // wait for low signal next
         gpio_set_irq_enabled(pin_gc_reset, GPIO_IRQ_LEVEL_HIGH, false);
         gpio_set_irq_enabled(pin_gc_reset, GPIO_IRQ_LEVEL_LOW, true);
@@ -327,7 +322,8 @@ void dvd_drv_set_error() {
 
 void dvd_drv_enable_passthrough()
 {
-    irq_set_enabled(IO_IRQ_BANK0, false);
+    //irq_set_enabled(IO_IRQ_BANK0, false);
+    gpio_set_irq_enabled(pin_gc_reset, GPIO_IRQ_LEVEL_LOW | GPIO_IRQ_LEVEL_HIGH, false);
     irq_set_enabled(PIO0_IRQ_0, false);
     irq_set_enabled(PIO0_IRQ_1, false);
 

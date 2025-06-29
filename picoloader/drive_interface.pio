@@ -73,7 +73,7 @@ wait 1 gpio pin_hstrb side 0
 jmp x-- wait_loop side 0
 ; send loop
 .wrap_target
-wait 1 gpio pin_gc_dir side 1 [1]
+wait 1 gpio pin_gc_dir side 1 [2]
 out pins, 8 side 1
-nop side 0 [2]
+nop side 0 [3]
 .wrap

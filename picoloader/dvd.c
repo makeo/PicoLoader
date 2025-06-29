@@ -8,7 +8,12 @@
 static bool disable_on_rst = false;
 static uint32_t last_error = 0;
 
-void dvd_request(uint8_t* req)
+void dvd_init()
+{
+    dvd_drv_init();
+}
+
+void dvd_request(uint8_t *req)
 {
     printf("req: %x %x %x %x %x %x %x %x %x %x %x %x\n", req[0], req[1], req[2], req[3], req[4], req[5], req[6], req[7], req[8], req[9], req[10], req[11]);
 

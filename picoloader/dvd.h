@@ -4,6 +4,8 @@
 #include <stdint.h>
 
 
+void dvd_init();
+
 // callbacks from driver
 void dvd_request(uint8_t* req);
 void dvd_reset();
