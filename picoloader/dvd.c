@@ -2,15 +2,19 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <hardware/flash.h>
 #include "dvd_drv.h"
-#include "test_payload.h"
 
 static bool disable_on_rst = false;
 static uint32_t last_error = 0;
 
+static const void* payload;
+
 void dvd_init()
 {
     dvd_drv_init();
+
+    payload = (const void*)(XIP_BASE + 0x40000);
 }
 
 void dvd_request(uint8_t *req)
@@ -34,7 +38,7 @@ void dvd_request(uint8_t *req)
                 disable_on_rst = true;
                 uint32_t addr = __builtin_bswap32(*(uint32_t*)&req[4]);
                 uint32_t len = __builtin_bswap32(*(uint32_t*)&req[8]) & ~0x1F;
-                dvd_drv_send(&gekkoboot_pal_payload[addr << 2], len);
+                dvd_drv_send(&payload[addr << 2], len);
             }
             break;
 
