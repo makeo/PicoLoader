@@ -126,7 +126,9 @@ void dvd_drv_init_gpios() {
     // open drain gpios
     gpio_init(pin_gc_brk);
     gpio_set_outover(pin_gc_brk, GPIO_OVERRIDE_LOW);
+    gpio_set_pulls(pin_gc_brk, false, false);
     gpio_set_oeover(pin_dvd_brk, GPIO_OVERRIDE_LOW); // currently not implemented
+    gpio_set_pulls(pin_dvd_brk, false, false);
 }
 
 void dvd_drv_init_pio() {

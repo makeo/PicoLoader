@@ -30,12 +30,15 @@ include(pico_sdk_import.cmake)
 
 project(picoloader C CXX ASM)
 
+# Shrink flash region to 128KB
+set(PICO_FLASH_SIZE_BYTES 131072)
+
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(picoloader picoloader.c )
+add_executable(picoloader picoloader.c)
 
 pico_set_program_name(picoloader "picoloader")
 pico_set_program_version(picoloader "0.1")
@@ -69,6 +72,9 @@ target_link_libraries(picoloader
 
 # Generate PIO header
 pico_generate_pio_header(picoloader ${CMAKE_CURRENT_LIST_DIR}/drive_interface.pio)
+
+# Add data memory regions
+target_link_options(picoloader PRIVATE -T${CMAKE_CURRENT_LIST_DIR}/memmap_data.ld)
 
 pico_add_extra_outputs(picoloader)
 
