@@ -10,5 +10,6 @@ void dvd_init();
 void dvd_request(uint8_t* req);
 void dvd_reset();
 
+void dvd_task();
 
 #endif // DVD_H

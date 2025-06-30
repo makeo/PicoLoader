@@ -3,7 +3,7 @@
 #include <hardware/clocks.h>
 #include "dvd.h"
 
-
+// PicoLoader by makeo for the Gamecube
 int main()
 {
     set_sys_clock_khz(200000, true);
@@ -12,6 +12,6 @@ int main()
     dvd_init();
 
     while (true) {
-        sleep_ms(10000);
+        dvd_task();
     }
 }

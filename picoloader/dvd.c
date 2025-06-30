@@ -8,13 +8,13 @@
 static bool disable_on_rst = false;
 static uint32_t last_error = 0;
 
-static const void* payload;
+static const uint8_t* payload;
 
 void dvd_init()
 {
     dvd_drv_init();
 
-    payload = (const void*)(XIP_BASE + 0x40000);
+    payload = (const uint8_t*)(XIP_BASE + 0x40000);
 }
 
 void dvd_request(uint8_t *req)
@@ -86,4 +86,9 @@ void dvd_reset()
         printf("enable passthrough\n");
         dvd_drv_enable_passthrough();
     }
+}
+
+void dvd_task()
+{
+    
 }
