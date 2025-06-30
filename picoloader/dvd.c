@@ -15,6 +15,10 @@ void dvd_init()
     dvd_drv_init();
 
     payload = (const uint8_t*)(XIP_BASE + 0x40000);
+
+    if (*(uint32_t*)&payload[0x1c] != 0x3d9f33c2) {
+        dvd_drv_enable_passthrough();
+    }
 }
 
 void dvd_request(uint8_t *req)
