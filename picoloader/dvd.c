@@ -29,23 +29,18 @@ void dvd_init()
 {
     dvd_drv_init();
 
-    printf("payload start: %x\n", (uint32_t)data_payload);
-
     // iso
     if (*(uint32_t*)&data_payload[0x1c] == 0x3d9f33c2) {
-        printf("found iso payload\n");
         disk_data = data_payload;
         return;
     }
 
     // dol
     if (dvd_is_valid_dol(data_payload)) {
-        printf("found dol payload\n");
         disk_data = data_header;
         return;
     }
 
-    printf("no payload\n");
     dvd_drv_enable_passthrough();
 }
 
@@ -76,8 +71,6 @@ bool dvd_is_valid_dol(const uint8_t* dol) {
 
 void dvd_request(uint8_t *req)
 {
-    printf("req: %x %x %x %x %x %x %x %x %x %x %x %x\n", req[0], req[1], req[2], req[3], req[4], req[5], req[6], req[7], req[8], req[9], req[10], req[11]);
-
     if (req == NULL) {
         dvd_drv_set_error();
         last_error = 0x040800;
@@ -95,7 +88,6 @@ void dvd_request(uint8_t *req)
                 disable_on_rst = true;
                 uint32_t addr = __builtin_bswap32(*(uint32_t*)&req[4]) << 2;
                 uint32_t len = __builtin_bswap32(*(uint32_t*)&req[8]) & ~0x1F;
-                printf("read: %x %x\n", addr, len);
                 dvd_drv_send(&disk_data[addr], len);
             }
             break;
@@ -139,7 +131,6 @@ void dvd_request(uint8_t *req)
 void dvd_reset()
 {
     if (disable_on_rst) {
-        printf("enable passthrough\n");
         dvd_drv_enable_passthrough();
     }
 }

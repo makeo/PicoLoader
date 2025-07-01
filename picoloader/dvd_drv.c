@@ -26,11 +26,6 @@ void dvd_drv_dir_irq_in(void);
 void dvd_drv_dir_irq_out(void);
 
 void dvd_drv_init() {
-    // dbg pin
-    gpio_init(22);
-    gpio_set_dir(22, true);
-    gpio_put(22, 0);
-
     dvd_drv_init_gpios();
 
     // hold drive in reset and keep dir low
@@ -265,11 +260,9 @@ void dvd_drv_gpio_irq(void) {
 
     uint32_t brk_status = gpio_get_irq_event_mask(pin_gc_brk);
     if (brk_status & GPIO_IRQ_EDGE_RISE) {
-        printf("brk rise\n");
         gpio_acknowledge_irq(pin_gc_brk, GPIO_IRQ_EDGE_RISE);
     }
     if(brk_status & GPIO_IRQ_EDGE_FALL) {
-        printf("brk fall\n");
         gpio_acknowledge_irq(pin_gc_brk, GPIO_IRQ_EDGE_FALL);
     }
 }
@@ -324,8 +317,7 @@ void dvd_drv_set_error() {
 
 void dvd_drv_enable_passthrough()
 {
-    //irq_set_enabled(IO_IRQ_BANK0, false);
-    gpio_set_irq_enabled(pin_gc_reset, GPIO_IRQ_LEVEL_LOW | GPIO_IRQ_LEVEL_HIGH, false);
+    irq_set_enabled(IO_IRQ_BANK0, false);
     irq_set_enabled(PIO0_IRQ_0, false);
     irq_set_enabled(PIO0_IRQ_1, false);
 
