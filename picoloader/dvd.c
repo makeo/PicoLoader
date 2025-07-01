@@ -86,9 +86,17 @@ void dvd_request(uint8_t *req)
         case 0xA8: // read
             {
                 disable_on_rst = true;
+
                 uint32_t addr = __builtin_bswap32(*(uint32_t*)&req[4]) << 2;
                 uint32_t len = __builtin_bswap32(*(uint32_t*)&req[8]) & ~0x1F;
-                dvd_drv_send(&disk_data[addr], len);
+
+                const uint8_t* dat = &disk_data[addr];
+                if ((uint32_t)dat + len > XIP_NOALLOC_BASE) {
+                    dvd_drv_set_error();
+                    last_error = 0x056300; // lead-out
+                } else {
+                    dvd_drv_send(dat, len);
+                }
             }
             break;
 
