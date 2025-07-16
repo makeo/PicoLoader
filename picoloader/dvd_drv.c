@@ -77,6 +77,10 @@ void dvd_drv_init() {
     pio_set_irq1_source_enabled(pio0, PIO_INTR_SM1_LSB, true);
 
 
+    // enable pull-down to check if a physical drive is present
+    gpio_set_pulls(pin_dvd_dstrb, false, true);
+    sleep_us(10);
+
     // close cover
     gpio_set_outover(pin_gc_cover, GPIO_OVERRIDE_LOW);
 
@@ -317,6 +321,11 @@ void dvd_drv_set_error() {
 
 void dvd_drv_enable_passthrough()
 {
+    // only activate passthrough if a drive is present
+    if (!gpio_get(pin_dvd_dstrb))
+        return;
+    gpio_set_pulls(pin_dvd_dstrb, false, false);
+
     irq_set_enabled(IO_IRQ_BANK0, false);
     irq_set_enabled(PIO0_IRQ_0, false);
     irq_set_enabled(PIO0_IRQ_1, false);
