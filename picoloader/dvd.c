@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <hardware/flash.h>
+#include <pico/bootrom.h>
 #include "dvd_drv.h"
 
 static bool disable_on_rst = false;
@@ -68,6 +69,7 @@ bool dvd_is_valid_dol(const uint8_t* dol) {
     return true;
 }
 
+void dvd_request_custom(uint8_t *req);
 
 void dvd_request(uint8_t *req)
 {
@@ -124,9 +126,27 @@ void dvd_request(uint8_t *req)
             dvd_drv_send(audio_resp, sizeof(audio_resp));
             break;
 
-        case 0xF4: // custom device info
-            static uint8_t device_info[32] = { 0x0D, 0x15, 0xE4, 0x5E, 0x00, 0x00, 0x00, 0x00 };
+        case 0xF4: // custom command
+            dvd_request_custom(req);
+            break;
+
+        default:
+            dvd_drv_set_error();
+            last_error = 0x052000;
+            break;
+    }
+}
+
+// custom commands
+void dvd_request_custom(uint8_t *req) {
+    switch(req[1]) {
+        case 0x00: // device info
+            static uint8_t device_info[32] = { 0x0D, 0x15, 0xE4, 0x5E, 0x00, 0x00, 0x00, 0x00 }; // last four bytes are for future use
             dvd_drv_send(device_info, sizeof(device_info));
+            break;
+
+        case 0x01: // reboot into bootloader 
+            reset_usb_boot(0, 0);
             break;
 
         default:
