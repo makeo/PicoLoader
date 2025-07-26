@@ -4,7 +4,12 @@
 #include <stdbool.h>
 #include <hardware/flash.h>
 #include <pico/bootrom.h>
+#include <pico/time.h>
+#include <hardware/gpio.h>
 #include "dvd_drv.h"
+
+// 0: off 1: on 2: blink
+static uint8_t led_state = 0;
 
 static bool disable_on_rst = false;
 static uint32_t last_error = 0;
@@ -28,6 +33,10 @@ bool dvd_is_valid_dol(const uint8_t* dol);
 
 void dvd_init()
 {
+    gpio_init(PICO_DEFAULT_LED_PIN);
+    gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
+    led_state = 1;
+
     dvd_drv_init();
 
     // iso
@@ -43,6 +52,7 @@ void dvd_init()
     }
 
     dvd_drv_enable_passthrough();
+    led_state = 2;
 }
 
 bool dvd_is_valid_dol(const uint8_t* dol) {
@@ -165,5 +175,15 @@ void dvd_reset()
 
 void dvd_task()
 {
-    
+    switch(led_state) {
+        case 0:
+            gpio_put(PICO_DEFAULT_LED_PIN, false);
+            break;
+        case 1:
+            gpio_put(PICO_DEFAULT_LED_PIN, true);
+            break;
+        case 2:
+            gpio_put(PICO_DEFAULT_LED_PIN, time_us_64() & (1 << 19));
+            break;
+    }
 }
