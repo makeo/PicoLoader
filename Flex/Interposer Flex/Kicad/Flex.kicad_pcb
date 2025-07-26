@@ -4924,6 +4924,18 @@
 			(justify left bottom)
 		)
 	)
+	(gr_text "D7"
+		(at 184.73 105.97 0)
+		(layer "F.SilkS")
+		(uuid "2857cf58-b57b-47ff-96d1-dc37adfdcd4b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
 	(gr_text "DVD_DIR"
 		(at 184.93 70.51 0)
 		(layer "F.SilkS")
@@ -5550,6 +5562,18 @@
 		(at 188.55 57.86 0)
 		(layer "F.SilkS")
 		(uuid "bbd9310e-011e-40f5-9442-215c496ef841")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "D6"
+		(at 184.73 103.48 0)
+		(layer "F.SilkS")
+		(uuid "d32901d8-4d1b-4eda-a054-94aeb09584fe")
 		(effects
 			(font
 				(size 1 1)
