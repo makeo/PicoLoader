@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PicoLoader ISO/DOL to UF2 Converter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      color: #f0f6fc;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+      background: #0d1117;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+    body {
+      position: relative;
+    }
+    .centered-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 24px;
+    }
+    .fullwidth-header {
+      max-width: 800px;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      box-sizing: border-box;
+    }
+    h1 {
+      color: #f0f6fc;
+      background: transparent;
+      border: none;
+      padding: 0 0 24px 0;
+      margin: -32px -32px 24px -32px;
+      font-size: 32px;
+      font-weight: 600;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border-bottom: 1px solid #30363d;
+      padding-left: 32px;
+      padding-right: 32px;
+      padding-top: 32px;
+    }
+    h1 span.arrow {
+      color: #f0f6fc;
+      font-size: 28px;
+      margin: 0 8px;
+      font-weight: 600;
+    }
+    #mainpanel {
+      background: #21262d;
+      border-radius: 12px;
+      border: 1px solid #30363d;
+      padding: 32px;
+      margin: 0 auto;
+      max-width: 800px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03);
+    }
+    #dropzone {
+      border: 2px dashed #30363d;
+      border-radius: 12px;
+      padding: 48px 24px;
+      text-align: center;
+      color: #8b949e;
+      background: #161b22;
+      font-size: 16px;
+      margin-bottom: 24px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      user-select: none;
+      font-weight: 400;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    #dropzone.dragover {
+      border-color: #f78166;
+      background: #21262d;
+      color: #f0f6fc;
+    }
+    #dropzone:hover {
+      border-color: #6e7681;
+      background: #21262d;
+    }
+    #dropzone input[type="file"] {
+      display: none;
+    }
+    #convertBtn {
+      background: #238636;
+      color: #ffffff;
+      border: 1px solid rgba(240, 246, 252, 0.1);
+      border-radius: 6px;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      margin: 16px 0;
+      transition: all 0.2s ease;
+      outline: none;
+      width: 100%;
+      max-width: 200px;
+      box-sizing: border-box;
+      height: 44px;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #convertBtn:disabled {
+      background: #6e7681;
+      color: #8b949e;
+      cursor: not-allowed;
+      border-color: rgba(240, 246, 252, 0.05);
+    }
+    #convertBtn:hover:not(:disabled) {
+      background: #2ea043;
+      border-color: rgba(240, 246, 252, 0.15);
+    }
+    #convertBtn:active:not(:disabled) {
+      background: #1a7f37;
+      transform: scale(0.98);
+    }
+    #downloadLink {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 16px 0;
+      padding: 12px 24px;
+      background: #1f6feb;
+      color: #ffffff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      border: 1px solid rgba(240, 246, 252, 0.1);
+      transition: all 0.2s ease;
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+      box-sizing: border-box;
+      height: 44px;
+      line-height: 1;
+    }
+    #downloadLink:hover {
+      background: #388bfd;
+      border-color: rgba(240, 246, 252, 0.15);
+      text-decoration: none;
+    }
+    #downloadLink[style*="display: none"] {
+      display: none !important;
+    }
+    #log {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      color: #f0f6fc;
+      font-size: 12px;
+      font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+      padding: 16px;
+      margin-top: 16px;
+      width: 100%;
+      min-height: 80px;
+      max-height: 200px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+    .github-link {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: #8b949e;
+    }
+    .github-link a {
+      color: #58a6ff;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .github-link a:hover {
+      text-decoration: underline;
+    }
+    .github-icon {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+    @media (max-width: 768px) {
+      .centered-container {
+        padding: 16px;
+      }
+      h1 {
+        font-size: 24px;
+        padding: 24px 16px;
+      }
+      #mainpanel {
+        padding: 24px 16px;
+      }
+      #dropzone {
+        padding: 32px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="centered-container">
+    <div id="mainpanel">
+      <h1>PicoLoader ISO/DOL <span class="arrow">→</span> UF2 Converter</h1>
+      <div id="dropzone">
+        <span id="dropzone-label">Drag and drop your <strong>.iso</strong> or <strong>.dol</strong> file here<br>or click to pick a file</span>
+        <input type="file" id="isoFile" accept=".iso,.dol">
+      </div>
+      <button id="convertBtn" disabled>Convert to UF2</button>
+      <a id="downloadLink" style="display:none">Download PicoLoader Payload filename.uf2</a>
+      <pre id="log"></pre>
+      <div class="github-link">
+        <a href="https://github.com/makeo/PicoLoader" target="_blank" rel="noopener noreferrer">
+          <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+          </svg>
+          View PicoLoader on GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+  <script>
+    const UF2_MAGIC_START0 = 0x0A324655;
+    const UF2_MAGIC_START1 = 0x9E5D5157;
+    const UF2_MAGIC_END = 0x0AB16F30;
+    const UF2_BLOCK_SIZE = 512;
+    const UF2_PAYLOAD_SIZE = 256;
+    const UF2_FAMILY_ID = 0xe48bff56;
+    const UF2_BASE_ADDR = 0x10031000;
+    const MAX_FILE_SIZE = 16576512;
+
+    let selectedFile = null;
+
+    function log(msg, clear = false) {
+      const logElem = document.getElementById('log');
+      if (clear) logElem.textContent = '';
+      logElem.textContent += msg + '\n';
+    }
+
+    function isoToUf2(arrayBuffer) {
+      const iso = new Uint8Array(arrayBuffer);
+      const numBlocks = Math.ceil(iso.length / UF2_PAYLOAD_SIZE);
+      const uf2 = new Uint8Array(numBlocks * UF2_BLOCK_SIZE);
+
+      for (let blockNum = 0; blockNum < numBlocks; ++blockNum) {
+        const ptr = blockNum * UF2_BLOCK_SIZE;
+        const payload = iso.subarray(blockNum * UF2_PAYLOAD_SIZE, (blockNum + 1) * UF2_PAYLOAD_SIZE);
+
+        const view = new DataView(uf2.buffer, ptr, UF2_BLOCK_SIZE);
+        view.setUint32(0, UF2_MAGIC_START0, true);
+        view.setUint32(4, UF2_MAGIC_START1, true);
+        view.setUint32(8, 0x00002000, true);
+        view.setUint32(12, UF2_BASE_ADDR + blockNum * UF2_PAYLOAD_SIZE, true);
+        view.setUint32(16, UF2_PAYLOAD_SIZE, true);
+        view.setUint32(20, blockNum, true);
+        view.setUint32(24, numBlocks, true);
+        view.setUint32(28, UF2_FAMILY_ID, true);
+        uf2.set(payload, ptr + 32);
+        for (let i = payload.length; i < UF2_PAYLOAD_SIZE; ++i) {
+          uf2[ptr + 32 + i] = 0;
+        }
+        view.setUint32(512 - 4, UF2_MAGIC_END, true);
+      }
+      return uf2;
+    }
+
+    function handleFile(file) {
+      if (!file) return;
+      const fileName = file.name.toLowerCase();
+      if (!fileName.endsWith('.iso') && !fileName.endsWith('.dol')) {
+        log('Error: File must have .iso or .dol extension', true);
+        selectedFile = null;
+        document.getElementById('dropzone-label').innerHTML = 'Drag and drop your <strong>.iso</strong> or <strong>.dol</strong> file here<br>or click to pick a file';
+        document.getElementById('convertBtn').disabled = true;
+        document.getElementById('convertBtn').style.display = '';
+        return;
+      }
+      if (file.size > MAX_FILE_SIZE) {
+        log(`Error: File size (${(file.size / 1024 / 1024).toFixed(2)} MB) exceeds maximum limit of ${(MAX_FILE_SIZE / 1024 / 1024).toFixed(2)} MB`, true);
+        selectedFile = null;
+        document.getElementById('dropzone-label').innerHTML = 'Drag and drop your <strong>.iso</strong> or <strong>.dol</strong> file here<br>or click to pick a file';
+        document.getElementById('convertBtn').disabled = true;
+        document.getElementById('convertBtn').style.display = '';
+        return;
+      }
+      selectedFile = file;
+      document.getElementById('dropzone-label').innerHTML = `<strong>Selected:</strong> ${file.name}<br><span style="font-size: 14px; color: #8b949e;">${(file.size / 1024 / 1024).toFixed(2)} MB</span><br><br>Click to select a different file`;
+      log(`Ready to convert: ${file.name} (${file.size} bytes)`, true);
+      document.getElementById('downloadLink').style.display = 'none';
+      document.getElementById('convertBtn').disabled = false;
+      document.getElementById('convertBtn').style.display = '';
+    }
+
+    document.getElementById('dropzone').addEventListener('click', function(e) {
+      if (e.target !== document.getElementById('isoFile')) {
+        document.getElementById('isoFile').click();
+      }
+    });
+    document.getElementById('isoFile').addEventListener('change', function(e) {
+      if (e.target.files.length) {
+        handleFile(e.target.files[0]);
+      }
+    });
+
+    const dropzone = document.getElementById('dropzone');
+    dropzone.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      dropzone.classList.add('dragover');
+    });
+    dropzone.addEventListener('dragleave', function(e) {
+      e.preventDefault();
+      dropzone.classList.remove('dragover');
+    });
+    dropzone.addEventListener('drop', function(e) {
+      e.preventDefault();
+      dropzone.classList.remove('dragover');
+      if (e.dataTransfer.files.length) {
+        const file = e.dataTransfer.files[0];
+        handleFile(file);
+      }
+    });
+
+    document.getElementById('convertBtn').onclick = () => {
+      if (!selectedFile) {
+        log('No file selected. Please choose a .iso or .dol file.', true);
+        return;
+      }
+      log(`Reading ${selectedFile.name}...`, true);
+      document.getElementById('downloadLink').style.display = 'none';
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        log('Converting to UF2...');
+        try {
+          const uf2 = isoToUf2(e.target.result);
+          const blob = new Blob([uf2], {type: 'application/octet-stream'});
+          const url = URL.createObjectURL(blob);
+          const downloadLink = document.getElementById('downloadLink');
+          downloadLink.href = url;
+          let outName = selectedFile.name.replace(/\.(iso|dol)$/i, '') + '.uf2';
+          downloadLink.download = outName;
+          downloadLink.textContent = 'Download PicoLoader Payload ' + outName;
+          downloadLink.style.display = '';
+          document.getElementById('convertBtn').disabled = true;
+          document.getElementById('convertBtn').style.display = 'none';
+          document.getElementById('dropzone-label').innerHTML = `<strong>Converted:</strong> ${selectedFile.name}<br><span style="font-size: 14px; color: #238636;">Ready for download!</span><br><br>Click to select a new file`;
+          log('Done! Click "Download" to save your UF2 file.');
+        } catch (err) {
+          log('Conversion failed: ' + err, true);
+        }
+      };
+      reader.readAsArrayBuffer(selectedFile);
+    };
+  </script>
+</body>
+</html>
