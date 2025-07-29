@@ -19,7 +19,7 @@ However, it is not a full optical drive emulator and currently only allows execu
 - Running Pico at 200Mhz for better compatibility with clone boards
 - No overdriving of signals
 - Easy to remove
-- [Low-profile install option](https://github.com/makeo/PicoLoader/wiki/4.-Advanced-Section#low-profile-install-option)
+- Alternative [low-profile install option](https://github.com/makeo/PicoLoader/wiki/4.-Advanced-Section#low-profile-install-option)
 
 ## Installation & Documentation
 Get started by looking at the [wiki](https://github.com/makeo/PicoLoader/wiki/)!
