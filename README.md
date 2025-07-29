@@ -15,8 +15,8 @@ This mod works by emulating a disk drive during boot, executing a homebrew app, 
 - No overdriving of signals
 - Easy to remove
 
-## Installation
-Get started by looking at the [installation instructions]([https://github.com/makeo/PicoLoader/wiki](https://github.com/makeo/PicoLoader/wiki/Hardware-Installation))!
+## Installation & Documentation
+Get started by looking at the [wiki](https://github.com/makeo/PicoLoader/wiki/)!
 
 ## Special Thanks
 - [silversteel](https://github.com/silverstee1) for his help, especially for making the flex PCB and mount
