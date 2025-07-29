@@ -12,7 +12,7 @@ However, it is not a full optical drive emulator and currently only allows execu
 ## Features
 - Open source
 - Cheap and easy to get components (Raspberry Pi Pico + Flex PCB + Diode)
-- No need to remove the disk drive
+- You can keep the disk drive
 - Simple to boot any homebrew app using an [online converter](https://makeo.github.io/PicoLoader/converter/)
 - No soldering directly to the GameCube or to tiny pads
 - No cutting the shell or any other part of the GameCube
