@@ -1,10 +1,13 @@
 # PicoLoader
 This is a modchip for the Nintendo GameCube to boot homebrew.\
-Its price and functionality are very similar to PicoBoot but has multiple advantages.
+Its price and functionality are very similar to [PicoBoot](https://github.com/webhdx/PicoBoot) but it has multiple advantages.
 
 Join the [Discord server](https://discord.gg/YtA9aU3BKZ) to get support and discuss the mod!
 
-This mod works by emulating a disk drive during boot, executing a homebrew app, and afterwards re-enabling the disk drive.
+## How does it work?
+This mod works by emulating a disk drive during boot, executing a homebrew app, and afterwards re-enabling the disk drive.\
+This is achieved using a flex PCB similar to FlippyDrive.
+However, it is not a full optical drive emulator and currently only allows executing small homebrew apps (e.g. [swiss](https://github.com/emukidid/swiss-gc)) from flash just like PicoBoot.
 
 ## Features
 - Open source
