@@ -82,7 +82,7 @@ void dvd_drv_init() {
     sleep_us(10);
 
     // close cover
-    gpio_set_outover(pin_gc_cover, GPIO_OVERRIDE_LOW);
+    dvd_drv_set_cover(false);
 
     // start ode
     irq_set_enabled(IO_IRQ_BANK0, true);
@@ -319,11 +319,15 @@ void dvd_drv_set_error() {
     pio_sm_exec(pio0, PIO_RECV_SM, pio_encode_set(pio_pins, 0));
 }
 
-void dvd_drv_enable_passthrough()
+void dvd_drv_set_cover(bool open) {
+    gpio_set_outover(pin_gc_cover, open ? GPIO_OVERRIDE_HIGH : GPIO_OVERRIDE_LOW);
+}
+
+bool dvd_drv_enable_passthrough()
 {
     // only activate passthrough if a drive is present
     if (!gpio_get(pin_dvd_dstrb))
-        return;
+        return false;
     gpio_set_pulls(pin_dvd_dstrb, false, false);
 
     irq_set_enabled(IO_IRQ_BANK0, false);
@@ -342,4 +346,6 @@ void dvd_drv_enable_passthrough()
     gpio_set_outover(pin_dvd_dir, GPIO_OVERRIDE_NORMAL);
     gpio_set_outover(pin_gc_cover, GPIO_OVERRIDE_NORMAL);
     gpio_set_outover(pin_dvd_reset, GPIO_OVERRIDE_NORMAL);
+
+    return true;
 }

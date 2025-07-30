@@ -51,7 +51,9 @@ void dvd_init()
         return;
     }
 
-    dvd_drv_enable_passthrough();
+    if (!dvd_drv_enable_passthrough()) {
+        dvd_drv_set_cover(true);
+    }
     led_state = 2;
 }
 
