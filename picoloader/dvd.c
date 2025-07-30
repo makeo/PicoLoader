@@ -58,24 +58,40 @@ void dvd_init()
 }
 
 bool dvd_is_valid_dol(const uint8_t* dol) {
-    // check addresses to see if it is a valid dol
-    #define CHECK_ADDR(x) ((x) & 0b11 || (x) < 0x80000000 || (x) > 0x817fffff)
+    // check if the dol is bootable by ipl
+
+    bool entrypoint_valid = false;
     uint32_t entrypoint = __builtin_bswap32(*(uint32_t*)&dol[0xe0]);
-    if (CHECK_ADDR(entrypoint))
-        return false;
+
+    uint32_t dol_size = 0;
+
     for (uint32_t i = 0; i < 18; i++) {
-        uint32_t address =  __builtin_bswap32(*(uint32_t*)&dol[0x48 + 4*i]);
-        if (address != 0 && CHECK_ADDR(address))
+        uint32_t offset = __builtin_bswap32(*(uint32_t*)&dol[0x00 + 4*i]);
+        if (offset != 0 && (offset & 0b11 || offset < 0x100))
             return false;
+
+        uint32_t address = __builtin_bswap32(*(uint32_t*)&dol[0x48 + 4*i]);
+        if (address != 0 && (address & 0b11 || address < 0x80000000 || address > 0x81200000))
+            return false;
+
+        uint32_t size = __builtin_bswap32(*(uint32_t*)&dol[0x90 + 4*i]);
+
+        dol_size = MAX(dol_size, offset + size);
+
+        // check if entrypoint is within a text segment
+        if (i < 7 && entrypoint >= address && entrypoint < address + size)
+            entrypoint_valid = true;
     }
 
-    // compute the size of the dol 
-    uint32_t size = 0;
-    for (uint32_t i = 0; i < 18; i++)
-        size = MAX(size, __builtin_bswap32(*(uint32_t*)&dol[4*i]) + __builtin_bswap32(*(uint32_t*)&dol[0x90 + 4*i]));
+    if (!entrypoint_valid)
+        return false;
 
-    // reject if too big
-    if(size < 0xFF || ((uint32_t)dol + size) > XIP_NOALLOC_BASE)
+    uint32_t bss_address = __builtin_bswap32(*(uint32_t*)&dol[0xd8]);
+    if (bss_address != 0 && bss_address < 0x80000000)
+        return false;
+
+    // reject if too small or too big
+    if(dol_size < 0x100 || ((uint32_t)dol + dol_size) > XIP_NOALLOC_BASE)
         return false;
 
     return true;
