@@ -14,12 +14,16 @@ However, it is not a full optical drive emulator and only allows executing small
 - Cheap and easy to get components (Raspberry Pi Pico + Flex PCB + Diode)
 - You can keep the disk drive
 - Simple to boot most homebrew apps using an [online converter](https://makeo.github.io/PicoLoader/converter/)
-- No soldering directly to the GameCube or to tiny pads
+- No soldering directly to the GameCube
+- Easy soldering
 - No permanent modifications to the GameCube
 - Running Pico at 200Mhz for better compatibility with clone boards
 - No overdriving of signals
 - Easy to remove
 - Alternative [low-profile install option](https://github.com/makeo/PicoLoader/wiki/4.-Advanced-Section#low-profile-install-option)
+
+## Planned Features
+- Solder-free variant
 
 ## Installation & Documentation
 Get started by looking at the [wiki](https://github.com/makeo/PicoLoader/wiki/)!
