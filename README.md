@@ -15,7 +15,7 @@ However, it is not a full optical drive emulator and only allows executing small
 - You can keep the disk drive
 - Simple to boot most homebrew apps using an [online converter](https://makeo.github.io/PicoLoader/converter/)
 - No soldering directly to the GameCube or to tiny pads
-- No cutting the shell or other parts of the GameCube
+- No permanent modifications to the GameCube
 - Running Pico at 200Mhz for better compatibility with clone boards
 - No overdriving of signals
 - Easy to remove
