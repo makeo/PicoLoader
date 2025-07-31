@@ -1,5 +1,5 @@
 # PicoLoader
-This is an ODE based modchip for the Nintendo GameCube to boot homebrew.\
+This is an ODE-based modchip for the Nintendo GameCube to boot homebrew.\
 Its price and functionality are very similar to [PicoBoot](https://github.com/webhdx/PicoBoot) but it has multiple advantages.
 
 Join the [Discord server](https://discord.gg/YtA9aU3BKZ) to get support and discuss the mod!
@@ -23,7 +23,7 @@ However, it is not a full optical drive emulator and only allows executing small
 - Alternative [low-profile install option](https://github.com/makeo/PicoLoader/wiki/4.-Advanced-Section#low-profile-install-option)
 
 ## Planned Features
-- Solder-free variant
+- Solder-free module
 
 ## Installation & Documentation
 Get started by looking at the [wiki](https://github.com/makeo/PicoLoader/wiki/)!
