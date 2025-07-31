@@ -272,14 +272,66 @@
       logElem.textContent += msg + '\n';
     }
 
-    function isoToUf2(arrayBuffer) {
-      const iso = new Uint8Array(arrayBuffer);
-      const numBlocks = Math.ceil(iso.length / UF2_PAYLOAD_SIZE);
+    function isValidDol(dol) {
+      const view = new DataView(dol.buffer);
+      
+      let entrypointValid = false;
+      const entrypoint = view.getUint32(0xe0, false);
+      
+      let dolSize = 0;
+      
+      for (let i = 0; i < 18; i++) {
+        const offset = view.getUint32(0x00 + 4*i, false);
+        if (offset !== 0 && ((offset & 0b11) || offset < 0x100)) {
+          return false;
+        }
+        
+        const address = view.getUint32(0x48 + 4*i, false);
+        if (address !== 0 && ((address & 0b11) || address < 0x80000000 || address > 0x81200000)) {
+          return false;
+        }
+        
+        const size = view.getUint32(0x90 + 4*i, false);
+        
+        dolSize = Math.max(dolSize, offset + size);
+        
+        if (i < 7 && entrypoint >= address && entrypoint < address + size) {
+          entrypointValid = true;
+        }
+      }
+      
+      if (!entrypointValid) {
+        return false;
+      }
+      
+      if (dolSize > dol.length) {
+        return false;
+      }
+      
+      const bssAddress = view.getUint32(0xd8, false);
+      if (bssAddress !== 0 && bssAddress < 0x80000000) {
+        return false;
+      }
+      
+      return true;
+    }
+
+    function isoToUf2(arrayBuffer, fileName) {
+      const data = new Uint8Array(arrayBuffer);
+      
+      if (fileName && fileName.toLowerCase().endsWith('.dol')) {
+        if (!isValidDol(data)) {
+          throw new Error('Invalid .dol file: File is not bootable by ipl or has invalid structure');
+        }
+        log('file appears to be a valid .dol');
+      }
+      
+      const numBlocks = Math.ceil(data.length / UF2_PAYLOAD_SIZE);
       const uf2 = new Uint8Array(numBlocks * UF2_BLOCK_SIZE);
 
       for (let blockNum = 0; blockNum < numBlocks; ++blockNum) {
         const ptr = blockNum * UF2_BLOCK_SIZE;
-        const payload = iso.subarray(blockNum * UF2_PAYLOAD_SIZE, (blockNum + 1) * UF2_PAYLOAD_SIZE);
+        const payload = data.subarray(blockNum * UF2_PAYLOAD_SIZE, (blockNum + 1) * UF2_PAYLOAD_SIZE);
 
         const view = new DataView(uf2.buffer, ptr, UF2_BLOCK_SIZE);
         view.setUint32(0, UF2_MAGIC_START0, true);
@@ -366,7 +418,7 @@
       reader.onload = function(e) {
         log('Converting to UF2...');
         try {
-          const uf2 = isoToUf2(e.target.result);
+          const uf2 = isoToUf2(e.target.result, selectedFile.name);
           const blob = new Blob([uf2], {type: 'application/octet-stream'});
           const url = URL.createObjectURL(blob);
           const downloadLink = document.getElementById('downloadLink');
@@ -380,7 +432,7 @@
           document.getElementById('dropzone-label').innerHTML = `<strong>Converted:</strong> ${selectedFile.name}<br><span style="font-size: 14px; color: #238636;">Ready for download!</span><br><br>Click to select a new file`;
           log('Done! Click "Download" to save your UF2 file.');
         } catch (err) {
-          log('Conversion failed: ' + err, true);
+          log('Conversion failed: ' + err.message, true);
         }
       };
       reader.readAsArrayBuffer(selectedFile);
