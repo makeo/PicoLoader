@@ -7,15 +7,15 @@ Join the [Discord server](https://discord.gg/YtA9aU3BKZ) to get support and disc
 ## How does it work?
 This mod works by emulating a disk drive during boot, executing a homebrew app, and afterwards re-enabling the disk drive.\
 This is achieved using a flex PCB similar to FlippyDrive.
-However, it is not a full optical drive emulator and currently only allows executing small homebrew apps (e.g. [swiss](https://github.com/emukidid/swiss-gc)) from flash just like PicoBoot.
+However, it is not a full optical drive emulator and only allows executing small homebrew apps (e.g. [swiss](https://github.com/emukidid/swiss-gc)) from flash just like PicoBoot.
 
 ## Features
 - Open source
 - Cheap and easy to get components (Raspberry Pi Pico + Flex PCB + Diode)
 - You can keep the disk drive
-- Simple to boot any homebrew app using an [online converter](https://makeo.github.io/PicoLoader/converter/)
+- Simple to boot most homebrew apps using an [online converter](https://makeo.github.io/PicoLoader/converter/)
 - No soldering directly to the GameCube or to tiny pads
-- No cutting the shell or any other part of the GameCube
+- No cutting the shell or other parts of the GameCube
 - Running Pico at 200Mhz for better compatibility with clone boards
 - No overdriving of signals
 - Easy to remove
