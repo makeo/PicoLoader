@@ -232,7 +232,7 @@
     <div id="mainpanel">
       <h1>PicoLoader ISO/DOL <span class="arrow">→</span> UF2 Converter</h1>
       <div id="dropzone">
-        <span id="dropzone-label">Drag and drop your <strong>.iso</strong> or <strong>.dol</strong> file here<br>or click to pick a file</span>
+        <span id="dropzone-label">Drag and drop your <strong>.iso</strong> or <strong>.dol</strong> file here<br>or click here to pick a file</span>
         <input type="file" id="isoFile" accept=".iso,.dol">
       </div>
       <button id="convertBtn" disabled>Convert to UF2</button>
@@ -323,7 +323,7 @@
         if (!isValidDol(data)) {
           throw new Error('Invalid .dol file: File is not bootable by ipl or has invalid structure');
         }
-        log('file appears to be a valid .dol');
+        log('File appears to be a valid .dol.');
       }
       
       const numBlocks = Math.ceil(data.length / UF2_PAYLOAD_SIZE);
@@ -357,7 +357,7 @@
       if (!fileName.endsWith('.iso') && !fileName.endsWith('.dol')) {
         log('Error: File must have .iso or .dol extension', true);
         selectedFile = null;
-        document.getElementById('dropzone-label').innerHTML = 'Drag and drop your <strong>.iso</strong> or <strong>.dol</strong> file here<br>or click to pick a file';
+        document.getElementById('dropzone-label').innerHTML = 'Drag and drop your <strong>.iso</strong> or <strong>.dol</strong> file here<br>or click here to pick a file';
         document.getElementById('convertBtn').disabled = true;
         document.getElementById('convertBtn').style.display = '';
         return;
@@ -365,7 +365,7 @@
       if (file.size > MAX_FILE_SIZE) {
         log(`Error: File size (${(file.size / 1024 / 1024).toFixed(2)} MB) exceeds maximum limit of ${(MAX_FILE_SIZE / 1024 / 1024).toFixed(2)} MB`, true);
         selectedFile = null;
-        document.getElementById('dropzone-label').innerHTML = 'Drag and drop your <strong>.iso</strong> or <strong>.dol</strong> file here<br>or click to pick a file';
+        document.getElementById('dropzone-label').innerHTML = 'Drag and drop your <strong>.iso</strong> or <strong>.dol</strong> file here<br>or click here to pick a file';
         document.getElementById('convertBtn').disabled = true;
         document.getElementById('convertBtn').style.display = '';
         return;
