@@ -371,7 +371,7 @@
         return;
       }
       selectedFile = file;
-      document.getElementById('dropzone-label').innerHTML = `<strong>Selected:</strong> ${file.name}<br><span style="font-size: 14px; color: #8b949e;">${(file.size / 1024 / 1024).toFixed(2)} MB</span><br><br>Click to select a different file`;
+      document.getElementById('dropzone-label').innerHTML = `<strong>Selected:</strong> ${file.name}<br><span style="font-size: 14px; color: #8b949e;">${(file.size / 1024 / 1024).toFixed(2)} MB</span><br><br>Click here to select a different file`;
       log(`Ready to convert: ${file.name} (${file.size} bytes)`, true);
       document.getElementById('downloadLink').style.display = 'none';
       document.getElementById('convertBtn').disabled = false;
