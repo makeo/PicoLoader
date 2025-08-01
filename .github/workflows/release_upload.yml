@@ -3,6 +3,7 @@ name: deploy-release-to-pages
 on:
   release:
     types: [published]
+  workflow_dispatch:
 
 jobs:
   deploy-to-pages:
@@ -30,15 +31,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # get release info
-          RELEASE_ID=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-            "https://api.github.com/repos/${{ github.repository }}/releases/tags/${{ github.event.release.tag_name }}" \
-            | jq -r '.id')
+          # get latest release info
+          LATEST_RELEASE=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/latest")
           
-          # download all assets
-          curl -s -H "Authorization: token $GITHUB_TOKEN" \
-            "https://api.github.com/repos/${{ github.repository }}/releases/$RELEASE_ID" \
-            | jq -r '.assets[] | .browser_download_url' \
+          RELEASE_TAG=$(echo "$LATEST_RELEASE" | jq -r '.tag_name')
+          echo "Downloading assets from latest release: $RELEASE_TAG"
+          
+          # download all assets from latest release
+          echo "$LATEST_RELEASE" | jq -r '.assets[] | .browser_download_url' \
             | while read url; do
                 filename=$(basename "$url")
                 curl -L -H "Authorization: token $GITHUB_TOKEN" "$url" -o "fw/$filename"
@@ -49,5 +50,11 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add fw/
-          git commit -m "Update fw files to ${{ github.event.release.tag_name }}" || exit 0
+          
+          # get the latest release tag for commit message
+          LATEST_TAG=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/latest" \
+            | jq -r '.tag_name')
+          
+          git commit -m "Update fw files to latest release $LATEST_TAG" || exit 0
           git push
