@@ -31,3 +31,5 @@ Get started by looking at the [wiki](https://github.com/makeo/PicoLoader/wiki/1.
 ## Special Thanks
 - [silversteel](https://github.com/silverstee1) for his help, especially for making the flex PCB and mount
 - [TeamOffBroadway](https://github.com/OffBroadway) for the amazing idea to use a flex PCB to intercept the drive signals
+- [Extrems](https://github.com/Extrems), [emukidid](https://github.com/emukidid) and everyone involved in creating swiss
+- [novenary (9ary)](https://github.com/9ary) for gekkoboot
