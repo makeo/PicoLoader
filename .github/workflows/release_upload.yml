@@ -42,6 +42,7 @@ jobs:
           echo "$LATEST_RELEASE" | jq -r '.assets[] | .browser_download_url' \
             | while read url; do
                 filename=$(basename "$url")
+                echo "downloading: $url"
                 curl -L -H "Authorization: token $GITHUB_TOKEN" "$url" -o "fw/$filename"
               done
 
