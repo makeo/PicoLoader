@@ -169,7 +169,7 @@ void dvd_request(uint8_t *req)
 void dvd_request_custom(uint8_t *req) {
     switch(req[1]) {
         case 0x00: // device info
-            static uint8_t device_info[32] = { 0x0D, 0x15, 0xE4, 0x5E, 0x00, 0x00, 0x00, 0x00 }; // last four bytes are for future use
+            static uint8_t device_info[32] = { 0x0D, 0x15, 0xE4, 0x5E, PROGRAM_VERSION_MAJOR, PROGRAM_VERSION_MINOR, 0x00, 0x00 }; // last two bytes are for future use
             dvd_drv_send(device_info, sizeof(device_info));
             break;
 

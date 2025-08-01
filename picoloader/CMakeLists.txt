@@ -36,12 +36,22 @@ set(PICO_FLASH_SIZE_BYTES 131072)
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
-# Add executable. Default name is the project name, version 0.1
-
+# Add executable
 add_executable(picoloader picoloader.c)
-
 pico_set_program_name(picoloader "picoloader")
-pico_set_program_version(picoloader "0.1")
+
+# Program version
+set(PROGRAM_VERSION_MAJOR "1")
+set(PROGRAM_VERSION_MINOR "0")
+set(PROGRAM_VERSION "${PROGRAM_VERSION_MAJOR}.${PROGRAM_VERSION_MINOR}")
+
+pico_set_program_version(picoloader "${PROGRAM_VERSION}")
+
+target_compile_definitions(picoloader PRIVATE
+    PROGRAM_VERSION_MAJOR=${PROGRAM_VERSION_MAJOR}
+    PROGRAM_VERSION_MINOR=${PROGRAM_VERSION_MINOR}
+    PROGRAM_VERSION="${PROGRAM_VERSION}"
+)
 
 # Modify the below lines to enable/disable output over UART/USB
 pico_enable_stdio_uart(picoloader 0)
