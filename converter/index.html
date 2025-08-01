@@ -167,6 +167,10 @@
     #downloadLink[style*="display: none"] {
       display: none !important;
     }
+    .checkbox-container {
+      display: flex;
+      visibility: visible;
+    }
     #log {
       background: #161b22;
       border: 1px solid #30363d;
@@ -237,6 +241,10 @@
       </div>
       <button id="convertBtn" disabled>Convert to UF2</button>
       <a id="downloadLink" style="display:none">Download PicoLoader Payload filename.uf2</a>
+      <div class="checkbox-container" style="margin: 8px 0; align-items: center; justify-content: center; gap: 8px;">
+        <input type="checkbox" id="includeFirmware" style="margin: 0;" checked>
+        <label for="includeFirmware" style="color: #f0f6fc; font-size: 14px; cursor: pointer; user-select: none;">Include firmware</label>
+      </div>
       <pre id="log"></pre>
       <div class="links-section">
         <a href="https://github.com/makeo/PicoLoader" target="_blank" rel="noopener noreferrer">
@@ -265,6 +273,10 @@
     const MAX_FILE_SIZE = 16576512;
 
     let selectedFile = null;
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('convertBtn').disabled = true;
+    });
 
     function log(msg, clear = false) {
       const logElem = document.getElementById('log');
@@ -316,7 +328,7 @@
       return true;
     }
 
-    function isoToUf2(arrayBuffer, fileName) {
+    function payloadToUf2(arrayBuffer, fileName) {
       const data = new Uint8Array(arrayBuffer);
       
       if (fileName && fileName.toLowerCase().endsWith('.dol')) {
@@ -351,6 +363,66 @@
       return uf2;
     }
 
+    function parseUf2Blocks(arrayBuffer) {
+      const blocks = [];
+      const u8 = new Uint8Array(arrayBuffer);
+      if (u8.length % UF2_BLOCK_SIZE !== 0)
+        throw new Error("File is not a multiple of 512 bytes");
+      for (let i = 0; i < u8.length; i += UF2_BLOCK_SIZE) {
+        const block = u8.slice(i, i + UF2_BLOCK_SIZE);
+        const dv = new DataView(block.buffer, block.byteOffset, block.byteLength);
+        if (dv.getUint32(0, true) !== UF2_MAGIC_START0)
+          throw new Error("UF2 magic0 mismatch at block " + (i/512));
+        if (dv.getUint32(4, true) !== UF2_MAGIC_START1)
+          throw new Error("UF2 magic1 mismatch at block " + (i/512));
+        if (dv.getUint32(512-4, true) !== UF2_MAGIC_END)
+          throw new Error("UF2 magic_end mismatch at block " + (i/512));
+        blocks.push(block);
+      }
+      return blocks;
+    }
+
+    function rewriteBlockIndices(blocks, startBlockIndex, totalBlocks) {
+      const result = [];
+      let blockIndex = startBlockIndex;
+      for (const block of blocks) {
+        const newBlock = block.slice();
+        const dv = new DataView(newBlock.buffer, newBlock.byteOffset, newBlock.byteLength);
+        dv.setUint32(20, blockIndex, true);
+        dv.setUint32(24, totalBlocks, true);
+        result.push(newBlock);
+        blockIndex++;
+      }
+      return result;
+    }
+
+    function combineUf2(uf2Data1, uf2Data2) {
+      const blocksArr = [uf2Data1, uf2Data2].map(data => parseUf2Blocks(data.buffer));
+      const totalBlocks = blocksArr[0].length + blocksArr[1].length;
+      const blocks1Rewritten = rewriteBlockIndices(blocksArr[0], 0, totalBlocks);
+      const blocks2Rewritten = rewriteBlockIndices(blocksArr[1], blocksArr[0].length, totalBlocks);
+      const allBlocks = blocks1Rewritten.concat(blocks2Rewritten);
+      const finalU8 = new Uint8Array(allBlocks.length * UF2_BLOCK_SIZE);
+      allBlocks.forEach((block, i) => {
+        finalU8.set(block, i * UF2_BLOCK_SIZE);
+      });
+      return finalU8;
+    }
+
+    async function downloadFirmware() {
+      try {
+        const response = await fetch('https://github.com/silverstee1/iplboot-Builds/releases/download/v0.3.4/gekkoboot_picoloader.uf2');
+        //const response = await fetch('https://github.com/makeo/PicoLoader/releases/latest/download/picoloader.uf2');
+        if (!response.ok) {
+          throw new Error(`Failed to download firmware: ${response.status} ${response.statusText}`);
+        }
+        const arrayBuffer = await response.arrayBuffer();
+        return new Uint8Array(arrayBuffer);
+      } catch (error) {
+        throw new Error(`Error downloading firmware: ${error.message}`);
+      }
+    }
+
     function handleFile(file) {
       if (!file) return;
       const fileName = file.name.toLowerCase();
@@ -376,6 +448,7 @@
       document.getElementById('downloadLink').style.display = 'none';
       document.getElementById('convertBtn').disabled = false;
       document.getElementById('convertBtn').style.display = '';
+      document.getElementById('includeFirmware').parentElement.style.visibility = 'visible';
     }
 
     document.getElementById('dropzone').addEventListener('click', function(e) {
@@ -407,35 +480,52 @@
       }
     });
 
-    document.getElementById('convertBtn').onclick = () => {
+    document.getElementById('convertBtn').onclick = async () => {
       if (!selectedFile) {
         log('No file selected. Please choose a .iso or .dol file.', true);
         return;
       }
       log(`Reading ${selectedFile.name}...`, true);
       document.getElementById('downloadLink').style.display = 'none';
-      const reader = new FileReader();
-      reader.onload = function(e) {
+      
+      const includeFirmware = document.getElementById('includeFirmware').checked;
+      
+      try {
+        const fileArrayBuffer = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = (e) => resolve(e.target.result);
+          reader.onerror = reject;
+          reader.readAsArrayBuffer(selectedFile);
+        });
+        
         log('Converting to UF2...');
-        try {
-          const uf2 = isoToUf2(e.target.result, selectedFile.name);
-          const blob = new Blob([uf2], {type: 'application/octet-stream'});
-          const url = URL.createObjectURL(blob);
-          const downloadLink = document.getElementById('downloadLink');
-          downloadLink.href = url;
-          let outName = selectedFile.name.replace(/\.(iso|dol)$/i, '') + '.uf2';
-          downloadLink.download = outName;
-          downloadLink.textContent = 'Download PicoLoader Payload ' + outName;
-          downloadLink.style.display = '';
-          document.getElementById('convertBtn').disabled = true;
-          document.getElementById('convertBtn').style.display = 'none';
-          document.getElementById('dropzone-label').innerHTML = `<strong>Converted:</strong> ${selectedFile.name}<br><span style="font-size: 14px; color: #238636;">Ready for download!</span><br><br>Click to select a new file`;
-          log('Done! Click "Download" to save your UF2 file.');
-        } catch (err) {
-          log('Conversion failed: ' + err.message, true);
+        const payloadUf2 = payloadToUf2(fileArrayBuffer, selectedFile.name);
+        
+        let finalUf2 = payloadUf2;
+        
+        if (includeFirmware) {
+          log('Downloading firmware...');
+          const firmwareUf2 = await downloadFirmware();
+          log('Combining firmware with payload...');
+          finalUf2 = combineUf2(firmwareUf2, payloadUf2);
         }
-      };
-      reader.readAsArrayBuffer(selectedFile);
+        
+        const blob = new Blob([finalUf2], {type: 'application/octet-stream'});
+        const url = URL.createObjectURL(blob);
+        const downloadLink = document.getElementById('downloadLink');
+        downloadLink.href = url;
+        let outName = selectedFile.name.replace(/\.(iso|dol)$/i, '') + '.uf2';
+        downloadLink.download = outName;
+        downloadLink.textContent = 'Download PicoLoader Payload ' + outName;
+        downloadLink.style.display = '';
+        document.getElementById('convertBtn').disabled = true;
+        document.getElementById('convertBtn').style.display = 'none';
+        document.getElementById('includeFirmware').parentElement.style.visibility = 'hidden';
+        document.getElementById('dropzone-label').innerHTML = `<strong>Converted:</strong> ${selectedFile.name}<br><span style="font-size: 14px; color: #238636;">Ready for download!</span><br><br>Click to select a new file`;
+        log('Done! Click "Download" to save your UF2 file.');
+      } catch (err) {
+        log('Conversion failed: ' + err.message, true);
+      }
     };
   </script>
 </body>
