@@ -411,8 +411,7 @@
 
     async function downloadFirmware() {
       try {
-        const response = await fetch('https://github.com/silverstee1/iplboot-Builds/releases/download/v0.3.4/gekkoboot_picoloader.uf2');
-        //const response = await fetch('https://github.com/makeo/PicoLoader/releases/latest/download/picoloader.uf2');
+        const response = await fetch('https://makeo.github.io/PicoLoader/fw/picoloader.uf2');
         if (!response.ok) {
           throw new Error(`Failed to download firmware: ${response.status} ${response.statusText}`);
         }
