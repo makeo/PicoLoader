@@ -3,6 +3,12 @@ name: deploy-release-to-pages
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'tag to deploy'
+        required: true
+        type: string
 
 jobs:
   deploy-to-pages:
