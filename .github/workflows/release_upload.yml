@@ -16,7 +16,7 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v4
         with:
-          ref: gh-pages
+          ref: pages
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: clear fw directory
