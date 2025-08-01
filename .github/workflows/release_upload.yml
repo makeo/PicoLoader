@@ -1,0 +1,53 @@
+name: Deploy Release to GitHub Pages
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy-to-pages:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: clear fw directory
+        run: |
+          if [ -d "fw" ]; then
+            rm -rf fw/*
+          fi
+          mkdir -p fw
+
+      - name: download release assets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # get release info
+          RELEASE_ID=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/tags/${{ github.event.release.tag_name }}" \
+            | jq -r '.id')
+          
+          # download all assets
+          curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/$RELEASE_ID" \
+            | jq -r '.assets[] | .browser_download_url' \
+            | while read url; do
+                filename=$(basename "$url")
+                curl -L -H "Authorization: token $GITHUB_TOKEN" "$url" -o "fw/$filename"
+              done
+
+      - name: commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add fw/
+          git commit -m "Update fw files to ${{ github.event.release.tag_name }}" || exit 0
+          git push
