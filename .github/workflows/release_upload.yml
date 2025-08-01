@@ -59,6 +59,10 @@ jobs:
             | jq -r '.tag_name')
 
           echo "commit tag: $LATEST_TAG"
+
+          TMP=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/latest")
+          echo "raw: $TMP"
           
           git commit -m "Update fw files to latest release $LATEST_TAG" || exit 0
           git push
