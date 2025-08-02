@@ -18,7 +18,6 @@ However, it is not a full optical drive emulator and only allows executing small
 - Easy soldering
 - No permanent modifications to the GameCube
 - Running Pico at 200Mhz for better compatibility with clone boards
-- No overdriving of signals
 - Easy to remove
 - Alternative [low-profile install option](https://github.com/makeo/PicoLoader/wiki/4.-Advanced-Section#low-profile-install-option)
 
