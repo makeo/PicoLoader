@@ -2,7 +2,7 @@ name: deploy-release-to-pages
 
 on:
   release:
-    types: [published]
+    types: [published, edited]
   workflow_dispatch:
 
 jobs:
@@ -14,20 +14,20 @@ jobs:
       id-token: write
 
     steps:
-      - name: checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           ref: pages
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: clear fw directory
+      - name: Clear fw directory
         run: |
           if [ -d "fw" ]; then
             rm -rf fw/*
           fi
           mkdir -p fw
 
-      - name: download release assets
+      - name: Download release assets
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -36,16 +36,16 @@ jobs:
             "https://api.github.com/repos/${{ github.repository }}/releases/latest")
           
           RELEASE_TAG=$(echo "$LATEST_RELEASE" | jq -r '.tag_name')
-          echo "Downloading assets from latest release: $RELEASE_TAG"
+          echo "Downloading $RELEASE_TAG assets"
           
           # download all assets from latest release
           echo "$LATEST_RELEASE" | jq -r '.assets[] | "\(.url) \(.name)"' \
             | while read url filename; do
-                echo "downloading: $filename from $url"
+                echo "Downloading $filename from $url"
                 curl -L -H "Authorization: Bearer $GITHUB_TOKEN" -H "Accept: application/octet-stream" "$url" -o "fw/$filename"
               done
 
-      - name: commit and push changes
+      - name: Commit and push changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -58,5 +58,5 @@ jobs:
             "https://api.github.com/repos/${{ github.repository }}/releases/latest" \
             | jq -r '.tag_name')
 
-          git commit -m "Update fw files to latest release $LATEST_TAG" || exit 0
+          git commit -m "Update fw files to $LATEST_TAG" || exit 0
           git push
