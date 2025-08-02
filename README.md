@@ -36,7 +36,7 @@ Get started by looking at the 📖[Wiki](https://github.com/makeo/PicoLoader/wik
 </div>
 
 ## Acknowledgements
-The source of [gbi.hdr](https://github.com/makeo/PicoLoader/blob/main/picoloader/data/gbi.hdr) is licensed under GPl-2.0 and available [here](https://github.com/silverstee1/cubeboot-tools)
+The source of [gbi.hdr](https://github.com/makeo/PicoLoader/blob/main/picoloader/data/gbi.hdr) is licensed under GPL-2.0 and available [here](https://github.com/silverstee1/cubeboot-tools)
 
 ## Special Thanks
 - [silversteel](https://github.com/silverstee1) for his help, especially for making the flex PCBs and mounts
