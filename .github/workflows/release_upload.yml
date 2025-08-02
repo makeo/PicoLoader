@@ -39,12 +39,10 @@ jobs:
           echo "Downloading assets from latest release: $RELEASE_TAG"
           
           # download all assets from latest release
-          echo "$LATEST_RELEASE" | jq -r '.assets[] | .browser_download_url' \
-            | while read url; do
-                filename=$(basename "$url")
-                echo "downloading: $url"
-                curl -L -H "Authorization: Bearer $GITHUB_TOKEN" "$url" -o "fw/$filename"
-                cat "fw/$filename"
+          echo "$LATEST_RELEASE" | jq -r '.assets[] | "\(.url) \(.name)"' \
+            | while read url filename; do
+                echo "downloading: $filename from $url"
+                curl -L -H "Authorization: Bearer $GITHUB_TOKEN" -H "Accept: application/octet-stream" "$url" -o "fw/$filename"
               done
 
       - name: commit and push changes
