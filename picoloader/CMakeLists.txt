@@ -42,7 +42,7 @@ pico_set_program_name(picoloader "picoloader")
 
 # Program version
 set(PROGRAM_VERSION_MAJOR "1")
-set(PROGRAM_VERSION_MINOR "0")
+set(PROGRAM_VERSION_MINOR "1")
 set(PROGRAM_VERSION "${PROGRAM_VERSION_MAJOR}.${PROGRAM_VERSION_MINOR}")
 
 pico_set_program_version(picoloader "${PROGRAM_VERSION}")
