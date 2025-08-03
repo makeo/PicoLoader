@@ -35,11 +35,11 @@ Get started by looking at the 📖[Wiki](https://github.com/makeo/PicoLoader/wik
   <img style="width: 23%; height: auto;" alt="4" src="https://github.com/user-attachments/assets/9d39575d-f7d6-4cbe-b33c-1c6f40ef0f82" />
 </div>
 
-## Acknowledgements
-The source of [gbi.hdr](https://github.com/makeo/PicoLoader/blob/main/picoloader/data/gbi.hdr) is licensed under GPL-2.0 and available [here](https://github.com/silverstee1/cubeboot-tools)
-
 ## Special Thanks
 - [silversteel](https://github.com/silverstee1) for his help, especially for making the flex PCBs and mounts
 - [TeamOffBroadway](https://github.com/OffBroadway) for the amazing idea to use a flex PCB to intercept the drive signals
 - [Extrems](https://github.com/Extrems), [emukidid](https://github.com/emukidid) and everyone involved in creating swiss
 - [novenary (9ary)](https://github.com/9ary) for gekkoboot
+
+## Acknowledgements
+The source of [gbi.hdr](https://github.com/makeo/PicoLoader/blob/main/picoloader/data/gbi.hdr) is licensed under GPL-2.0 and available [here](https://github.com/silverstee1/cubeboot-tools)
