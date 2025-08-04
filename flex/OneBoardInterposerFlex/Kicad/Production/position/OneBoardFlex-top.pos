@@ -1,0 +1,34 @@
+### Footprint positions - created on 2025-08-04T00:30:50-0700 ###
+### Printed by KiCad version 9.0.3
+## Unit = mm, Angle = deg.
+## Side : top
+# Ref     Val             Package                                   PosX       PosY       Rot  Side
+C1        10uF            C_0805_2012Metric                     200.3552   -70.6628  -90.0000  top
+C2        10uF            C_0805_2012Metric                     203.1238   -71.3740  180.0000  top
+C3        15pF            C_0402_1005Metric                     187.5790   -96.9264  180.0000  top
+C4        15pF            C_0402_1005Metric                     192.6336  -100.2792  -135.0000  top
+C5        100nF           C_0201_0603Metric                     196.8269   -83.5637   45.0000  top
+C6        1uF             C_0201_0603Metric                     197.5358   -90.0684  -135.0000  top
+C7        100nF           C_0201_0603Metric                     196.6722   -88.4936   45.0000  top
+C8        100nF           C_0201_0603Metric                     195.5800   -96.4946  -45.0000  top
+C9        100nF           C_0201_0603Metric                     186.9948   -89.6112    0.0000  top
+C10       100nF           C_0201_0603Metric                     198.0438   -94.0562  135.0000  top
+C11       100nF           C_0201_0603Metric                     198.6534   -91.1860  -135.0000  top
+C12       1uF             C_0201_0603Metric                     198.0946   -90.6272  -135.0000  top
+C13       100nF           C_0201_0603Metric                     191.0842   -86.9442  -45.0000  top
+D1        CUS08F30,H3F    D_SOD-323_HandSoldering               202.3618   -79.5528  -90.0000  top
+D2        CUS08F30,H3F    D_SOD-323_HandSoldering               200.3298   -74.5490  -90.0000  top
+J1        GT-USB-7010ASV  USB_C_Receptacle_GT-USB-7010          192.7078   -70.3738  180.0000  top
+R1        1k              R_0201_0603Metric                     192.8114   -85.5472   45.0000  top
+R2        5.1k            R_0201_0603Metric                     194.5640   -76.0222    0.0000  top
+R3        5.1k            R_0201_0603Metric                     190.6340   -76.0222  180.0000  top
+R4        1k              R_0201_0603Metric                     189.1538   -95.8088  -135.0000  top
+R5        27R             R_0201_0603Metric                     198.1708   -87.8332  -135.0000  top
+R6        27R             R_0201_0603Metric                     198.7042   -88.3666  -135.0000  top
+SW1       TS-1187A-C-A-B  TS-1187A-C-E-B                        183.6420   -74.2115   90.0000  top
+U1        RT9013-33GB-MS  SOT-23-5                              203.6572   -74.2301    0.0000  top
+U2        ~               DVDCN_FLEX_PADS                       128.2200   -66.8300    0.0000  top
+U3        W25Q16JVUXIQ    USON-8-EP(2x3)                        195.5027   -85.8520   45.0000  top
+U4        RP2040          QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm   192.7078   -92.3738  -45.0000  top
+Y1        ABM8-272-T3     Crystal_SMD_3225-4Pin_3.2x2.5mm       190.1190   -98.9584  -45.0000  top
+## End
