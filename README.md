@@ -26,7 +26,7 @@ However, it is not a full optical drive emulator and only allows executing small
 
 ## Installation & Documentation
 > [!IMPORTANT]
-> Please follow the installation instructions in the wiki.\
+> Please follow the [installation instructions](https://github.com/makeo/PicoLoader/wiki/2.-Hardware-Installation) in the wiki.\
 > When not following the instructions, there is a chance of breaking the flex PCB during installation.
 
 Get started by looking at the 📖[Wiki](https://github.com/makeo/PicoLoader/wiki/1.-Home)!
