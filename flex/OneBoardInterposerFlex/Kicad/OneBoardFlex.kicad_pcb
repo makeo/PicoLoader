@@ -13592,7 +13592,7 @@
 		(layer "Edge.Cuts")
 		(uuid "fa0cee0b-fc0f-4819-a2f2-68a1f1253673")
 	)
-	(gr_text "PCB Layout By silverstone / Mitch Cairns"
+	(gr_text "PCB Layout By silversteel / Mitch Cairns"
 		(at 155.0162 108.1024 0)
 		(layer "F.SilkS")
 		(uuid "0a401181-6426-445d-8062-4f8f4d336bdd")
@@ -14141,8 +14141,8 @@
 			(justify mirror)
 		)
 	)
-	(gr_text "PCB Layout By silverstone / Mitch Cairns"
-		(at 154.686 108.0516 -0)
+	(gr_text "PCB Layout By silversteel / Mitch Cairns"
+		(at 154.686 108.0516 0)
 		(layer "B.SilkS")
 		(uuid "dc2af39b-809a-4bd9-8ce8-4dd2e62a4029")
 		(effects
