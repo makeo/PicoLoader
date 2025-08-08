@@ -29,6 +29,7 @@
       align-items: center;
       justify-content: flex-start;
       padding: 24px;
+      box-sizing: border-box;
     }
     .fullwidth-header {
       max-width: 800px;
@@ -74,6 +75,7 @@
       align-items: center;
       position: relative;
       box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03);
+      box-sizing: border-box;
     }
     #dropzone {
       border: 2px dashed #30363d;
@@ -216,17 +218,19 @@
     }
     @media (max-width: 768px) {
       .centered-container {
-        padding: 16px;
+        padding: 12px;
       }
       h1 {
         font-size: 24px;
-        padding: 24px 16px;
+        padding: 20px 16px;
+        margin: -20px -16px 20px -16px;
       }
       #mainpanel {
-        padding: 24px 16px;
+        padding: 20px;
+        width: 100%;
       }
       #dropzone {
-        padding: 32px 16px;
+        padding: 24px 16px;
       }
     }
   </style>
