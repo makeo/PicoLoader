@@ -1097,6 +1097,189 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:LED"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LED"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Light emitting diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Pins" "1=K 2=A"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "LED diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "LED_0_1"
+				(polyline
+					(pts
+						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "LED_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:R"
 			(pin_numbers
 				(hide yes)
@@ -2827,39 +3010,41 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Regulator_Linear:LP2985-2.5"
+		(symbol "Regulator_Linear:XC6206PxxxMR"
 			(pin_names
 				(offset 0.254)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "U5"
-				(at 0 8.89 0)
+			(property "Reference" "U"
+				(at -3.81 3.175 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" "RT9013-33GB-MS"
-				(at 0 6.35 0)
+			(property "Value" "XC6206PxxxMR"
+				(at 0 3.175 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
-			(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5"
-				(at 0 8.255 0)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23-3"
+				(at 0 5.715 0)
 				(effects
 					(font
 						(size 1.27 1.27)
+						(italic yes)
 					)
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "https://lcsc.com/datasheet/lcsc_datasheet_2307051759_MSKSEMI-RT9013-33GB-MS_C7434207.pdf"
+			(property "Datasheet" "https://www.torexsemi.com/file/xc6206/XC6206.pdf"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2868,7 +3053,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "500mA 75dB@(1kHz) Fixed 3.3V Positive 5.5V SOT-23-5 Voltage Regulators - Linear, Low Drop Out (LDO) Regulators ROHS"
+			(property "Description" "Positive 60-250mA Low Dropout Regulator, Fixed Output, SOT-23"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2877,7 +3062,7 @@
 					(hide yes)
 				)
 			)
-			(property "LCSC" "C7434207"
+			(property "ki_keywords" "Torex LDO Voltage Regulator Fixed Positive"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2886,7 +3071,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "LDO regulator linear  SOT-23-5"
+			(property "ki_fp_filters" "SOT?23?3*"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2895,19 +3080,10 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "SOT?23*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "LP2985-2.5_0_1"
+			(symbol "XC6206PxxxMR_0_1"
 				(rectangle
-					(start -7.62 -5.08)
-					(end 7.62 4.445)
+					(start -5.08 1.905)
+					(end 5.08 -5.08)
 					(stroke
 						(width 0.254)
 						(type default)
@@ -2917,29 +3093,11 @@
 					)
 				)
 			)
-			(symbol "LP2985-2.5_1_1"
+			(symbol "XC6206PxxxMR_1_1"
 				(pin power_in line
-					(at -10.16 2.54 0)
+					(at -7.62 0 0)
 					(length 2.54)
-					(name "VIN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -10.16 0 0)
-					(length 2.54)
-					(name "ON/~{OFF}"
+					(name "VI"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2964,7 +3122,7 @@
 							)
 						)
 					)
-					(number "2"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2973,34 +3131,16 @@
 					)
 				)
 				(pin power_out line
-					(at 10.16 2.54 180)
+					(at 7.62 0 180)
 					(length 2.54)
-					(name "VOUT"
+					(name "VO"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 10.16 0 180)
-					(length 2.54)
-					(name "BP"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5050,12 +5190,6 @@
 		(uuid "42d48b14-110d-41af-91e3-6b3f163dd7dc")
 	)
 	(junction
-		(at 30.48 128.27)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "43c2878b-2ecc-4496-9ee5-d67db3e8d29f")
-	)
-	(junction
 		(at 120.65 187.96)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5084,12 +5218,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8820bf25-e37c-44ca-9146-64545950b883")
-	)
-	(junction
-		(at 60.96 139.7)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "91b46546-015a-4fe0-bf07-6274c6291230")
 	)
 	(junction
 		(at 229.87 63.5)
@@ -5138,6 +5266,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ce893def-a17b-478c-bdaf-164d3f4abb87")
+	)
+	(junction
+		(at 60.96 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d015d9a9-07ea-418c-aec1-9684bbf07d77")
 	)
 	(junction
 		(at 44.45 139.7)
@@ -5595,6 +5729,16 @@
 		)
 		(uuid "3a9d8c58-e449-4c47-bb43-6c57f9dc5d86")
 	)
+	(wire
+		(pts
+			(xy 262.89 137.16) (xy 264.16 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3aea03cc-39aa-4d40-9d32-53f005fde9e4")
+	)
 	(polyline
 		(pts
 			(xy 154.94 195.58) (xy 102.87 195.58)
@@ -5674,16 +5818,6 @@
 			(type default)
 		)
 		(uuid "452ce12b-c04c-4799-acde-cab2e3b4ddef")
-	)
-	(wire
-		(pts
-			(xy 34.29 130.81) (xy 30.48 130.81)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4541ee78-36f5-41ff-a24f-84eee3abc934")
 	)
 	(polyline
 		(pts
@@ -5824,16 +5958,6 @@
 			(type default)
 		)
 		(uuid "5268a085-81dd-4863-8f5e-41d1b2e4a72c")
-	)
-	(wire
-		(pts
-			(xy 30.48 128.27) (xy 34.29 128.27)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5599a5f5-4fab-4228-842e-42328e42597f")
 	)
 	(wire
 		(pts
@@ -6077,7 +6201,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 138.43) (xy 44.45 139.7)
+			(xy 44.45 135.89) (xy 44.45 139.7)
 		)
 		(stroke
 			(width 0)
@@ -6157,16 +6281,6 @@
 	)
 	(wire
 		(pts
-			(xy 54.61 128.27) (xy 60.96 128.27)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8111d34d-ab92-4612-b17e-5e34ced7af22")
-	)
-	(wire
-		(pts
 			(xy 247.65 124.46) (xy 245.11 124.46)
 		)
 		(stroke
@@ -6234,6 +6348,16 @@
 			(type default)
 		)
 		(uuid "89eb88ed-7f45-4760-a36a-445cf107eb86")
+	)
+	(wire
+		(pts
+			(xy 273.05 137.16) (xy 271.78 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8ced30bd-5435-4f36-af47-9ec2c4ea15ac")
 	)
 	(wire
 		(pts
@@ -6387,17 +6511,7 @@
 	)
 	(wire
 		(pts
-			(xy 30.48 128.27) (xy 30.48 130.81)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9ff76773-d006-4515-985e-5c5415abcc0d")
-	)
-	(wire
-		(pts
-			(xy 247.65 137.16) (xy 245.11 137.16)
+			(xy 245.11 137.16) (xy 255.27 137.16)
 		)
 		(stroke
 			(width 0)
@@ -6647,6 +6761,16 @@
 	)
 	(wire
 		(pts
+			(xy 52.07 128.27) (xy 60.96 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c1b0056a-9673-42c2-8fbf-9be883df7c4b")
+	)
+	(wire
+		(pts
 			(xy 50.8 88.9) (xy 48.26 88.9)
 		)
 		(stroke
@@ -6827,7 +6951,7 @@
 	)
 	(wire
 		(pts
-			(xy 27.94 128.27) (xy 30.48 128.27)
+			(xy 27.94 128.27) (xy 36.83 128.27)
 		)
 		(stroke
 			(width 0)
@@ -8447,7 +8571,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 189.23 85.598 90)
 			(effects
 				(font
@@ -8456,7 +8580,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588899757724995584"
 			(at 189.23 83.82 0)
 			(effects
 				(font
@@ -8474,7 +8598,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPN" ""
+		(property "JLCPN" "C138021"
 			(at 189.23 83.82 0)
 			(effects
 				(font
@@ -8483,7 +8607,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C273268"
+		(property "LCSC" ""
 			(at 189.23 83.82 0)
 			(effects
 				(font
@@ -8519,7 +8643,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://www.lcsc.com/product-detail/Chip-Resistor-Surface-Mount_YAGEO-RC0201FR-0727RL_C273268.html"
+		(property "Link" "https://jlcpcb.com/partdetail/YAGEO-RC0402FR0727RL/C138021"
 			(at 189.23 83.82 0)
 			(effects
 				(font
@@ -8528,7 +8652,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0201"
+		(property "Package" "0402"
 			(at 189.23 83.82 0)
 			(effects
 				(font
@@ -8537,7 +8661,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "YAGEO"
+		(property "Manufacturer" ""
 			(at 189.23 83.82 0)
 			(effects
 				(font
@@ -8637,6 +8761,156 @@
 	)
 	(symbol
 		(lib_id "Device:C")
+		(at 60.96 135.89 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "07ff0842-f3eb-4f8b-9bd6-c65689983b37")
+		(property "Reference" "C1"
+			(at 58.42 130.81 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1uF"
+			(at 56.1086 130.81 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 59.9948 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707174974914560"
+			(at 60.96 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 60.96 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPN" "C52923"
+			(at 60.96 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" ""
+			(at 60.96 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRM033R60J105KEA2D"
+			(at 60.96 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "0.0007"
+			(at 60.96 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Confirmed" "YES"
+			(at 60.96 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Link" "https://jlcpcb.com/partdetail/53938-CL05A105KA5NQNC/C52923"
+			(at 60.96 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "0402"
+			(at 60.96 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 60.96 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Reviewed" "Yes"
+			(at 60.96 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "28e9f05a-d23f-454f-9c05-c2adc5074f21")
+		)
+		(pin "2"
+			(uuid "12dd1c68-1928-459a-93ef-4ed1273445fb")
+		)
+		(instances
+			(project "OneBoardFlex"
+				(path "/2089e845-13f5-4d9d-90cf-b97608a1d968"
+					(reference "C1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
 		(at 127 187.96 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8671,7 +8945,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707286171729920"
 			(at 127 187.96 0)
 			(effects
 				(font
@@ -8689,7 +8963,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C326803"
+		(property "LCSC" ""
 			(at 127 187.96 0)
 			(effects
 				(font
@@ -8725,7 +8999,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://www.lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_YAGEO-CC0402FRNPO9BN150_C326803.html"
+		(property "Link" "https://jlcpcb.com/partdetail/1900-0402CG150J500NT/C1548"
 			(at 127 187.96 0)
 			(effects
 				(font
@@ -8743,7 +9017,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "YAGEO"
+		(property "Manufacturer" ""
 			(at 127 187.96 0)
 			(effects
 				(font
@@ -8753,6 +9027,15 @@
 			)
 		)
 		(property "Reviewed" "Yes"
+			(at 127 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPN" "C1548"
 			(at 127 187.96 0)
 			(effects
 				(font
@@ -8801,7 +9084,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 189.23 83.058 90)
 			(effects
 				(font
@@ -8810,7 +9093,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588899757724995584"
 			(at 189.23 81.28 0)
 			(effects
 				(font
@@ -8828,7 +9111,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPN" ""
+		(property "JLCPN" "C138021"
 			(at 189.23 81.28 0)
 			(effects
 				(font
@@ -8837,7 +9120,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C273268"
+		(property "LCSC" ""
 			(at 189.23 81.28 0)
 			(effects
 				(font
@@ -8873,7 +9156,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://www.lcsc.com/product-detail/Chip-Resistor-Surface-Mount_YAGEO-RC0201FR-0727RL_C273268.html"
+		(property "Link" "https://jlcpcb.com/partdetail/YAGEO-RC0402FR0727RL/C138021"
 			(at 189.23 81.28 0)
 			(effects
 				(font
@@ -8882,7 +9165,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0201"
+		(property "Package" "0402"
 			(at 189.23 81.28 0)
 			(effects
 				(font
@@ -8891,7 +9174,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "YAGEO"
+		(property "Manufacturer" ""
 			(at 189.23 81.28 0)
 			(effects
 				(font
@@ -9294,7 +9577,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8550723933012836352"
 			(at 256.54 157.48 0)
 			(effects
 				(font
@@ -9321,7 +9604,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPN" ""
+		(property "JLCPN" "C2040"
 			(at 219.71 111.76 0)
 			(effects
 				(font
@@ -9339,7 +9622,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2040"
+		(property "LCSC" ""
 			(at 219.71 111.76 0)
 			(effects
 				(font
@@ -9357,7 +9640,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://www.lcsc.com/product-detail/Microcontrollers-MCU-MPU-SOC_Raspberry-Pi-RP2040_C2040.html"
+		(property "Link" "https://jlcpcb.com/partdetail/RaspberryPi-RP2040/C2040"
 			(at 219.71 111.76 0)
 			(effects
 				(font
@@ -9375,7 +9658,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Raspberry Pi"
+		(property "Manufacturer" ""
 			(at 219.71 111.76 0)
 			(effects
 				(font
@@ -9655,7 +9938,7 @@
 				)
 			)
 		)
-		(property "Value" "TS-1187A-C-A-B"
+		(property "Value" "TS-1187A-B-A-B"
 			(at 92.71 44.958 0)
 			(effects
 				(font
@@ -9672,7 +9955,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8550724022091735041"
 			(at 92.71 48.26 0)
 			(effects
 				(font
@@ -9699,7 +9982,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPN" ""
+		(property "JLCPN" "C318884"
 			(at 92.71 48.26 0)
 			(effects
 				(font
@@ -9726,7 +10009,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C318887"
+		(property "LCSC" ""
 			(at 92.71 48.26 0)
 			(effects
 				(font
@@ -9735,7 +10018,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://www.lcsc.com/product-detail/Tactile-Switches_XKB-Connection-TS-1187A-C-A-B_C480267.html"
+		(property "Link" "https://jlcpcb.com/partdetail/XKBConnection-TS_1187A_B_AB/C318884"
 			(at 92.71 48.26 0)
 			(effects
 				(font
@@ -9762,7 +10045,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "XKB Connection"
+		(property "Manufacturer" ""
 			(at 92.71 48.26 0)
 			(effects
 				(font
@@ -9927,6 +10210,110 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:LED")
+		(at 267.97 137.16 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3052eb4b-e9b3-4af7-abe4-c8e7f0f45751")
+		(property "Reference" "D3"
+			(at 269.5575 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "KT-0603R"
+			(at 269.5575 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
+			(at 267.97 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8550723991833485312"
+			(at 267.97 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 267.97 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=K 2=A"
+			(at 267.97 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPN" "C2286"
+			(at 267.97 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Link" "https://jlcpcb.com/partdetail/Hubei_KENTOElec-KT0603R/C2286"
+			(at 267.97 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "0603"
+			(at 267.97 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "12d9e16d-b22b-435e-866e-9160ef9a0f2a")
+		)
+		(pin "2"
+			(uuid "390dd760-0764-444a-b53d-ae7d5ab7bcc5")
+		)
+		(instances
+			(project ""
+				(path "/2089e845-13f5-4d9d-90cf-b97608a1d968"
+					(reference "D3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 107.95 74.93 90)
 		(unit 1)
@@ -9953,7 +10340,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 107.95 76.708 90)
 			(effects
 				(font
@@ -9962,7 +10349,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579706036003409920"
 			(at 107.95 74.93 0)
 			(effects
 				(font
@@ -9980,7 +10367,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C274341"
+		(property "LCSC" ""
 			(at 107.95 74.93 0)
 			(effects
 				(font
@@ -9998,7 +10385,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "YAGEO"
+		(property "Manufacturer" ""
 			(at 107.95 74.93 0)
 			(effects
 				(font
@@ -10016,7 +10403,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" ""
+		(property "Link" "https://jlcpcb.com/partdetail/26648-0402WGF5101TCE/C25905"
 			(at 107.95 74.93 0)
 			(effects
 				(font
@@ -10025,7 +10412,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0201"
+		(property "Package" "0402"
 			(at 107.95 74.93 0)
 			(effects
 				(font
@@ -10036,6 +10423,15 @@
 		)
 		(property "Reviewed" "Yes"
 			(at 107.95 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPN" "C25905"
+			(at 107.95 74.93 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10075,7 +10471,7 @@
 				)
 			)
 		)
-		(property "Value" "CUS08F30,H3F"
+		(property "Value" "1N5819WS"
 			(at 36.83 110.49 0)
 			(effects
 				(font
@@ -10083,7 +10479,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-323_HandSoldering"
+		(property "Footprint" "Diode_SMD:D_SOD-323"
 			(at 36.83 107.95 0)
 			(effects
 				(font
@@ -10092,7 +10488,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8550723919347523584"
 			(at 36.83 105.41 0)
 			(effects
 				(font
@@ -10119,7 +10515,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C150183"
+		(property "LCSC" ""
 			(at 36.83 113.03 0)
 			(effects
 				(font
@@ -10137,7 +10533,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" ""
+		(property "Link" "https://jlcpcb.com/partdetail/GuangdongHottech-1N5819WS/C191023"
 			(at 36.83 113.03 0)
 			(effects
 				(font
@@ -10155,7 +10551,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "TOSHIBA"
+		(property "Manufacturer" ""
 			(at 36.83 113.03 0)
 			(effects
 				(font
@@ -10165,6 +10561,15 @@
 			)
 		)
 		(property "Reviewed" "Yes"
+			(at 36.83 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPN" "C191023"
 			(at 36.83 113.03 0)
 			(effects
 				(font
@@ -10282,7 +10687,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 107.95 79.248 90)
 			(effects
 				(font
@@ -10291,7 +10696,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579706036003409920"
 			(at 107.95 77.47 0)
 			(effects
 				(font
@@ -10309,7 +10714,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C274341"
+		(property "LCSC" ""
 			(at 107.95 77.47 0)
 			(effects
 				(font
@@ -10327,7 +10732,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "YAGEO"
+		(property "Manufacturer" ""
 			(at 107.95 77.47 0)
 			(effects
 				(font
@@ -10345,7 +10750,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" ""
+		(property "Link" "https://jlcpcb.com/partdetail/26648-0402WGF5101TCE/C25905"
 			(at 107.95 77.47 0)
 			(effects
 				(font
@@ -10354,7 +10759,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0201"
+		(property "Package" "0402"
 			(at 107.95 77.47 0)
 			(effects
 				(font
@@ -10365,6 +10770,15 @@
 		)
 		(property "Reviewed" "Yes"
 			(at 107.95 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPN" "C25905"
+			(at 107.95 77.47 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10557,7 +10971,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8559470777180311552"
 			(at 142.24 182.88 0)
 			(effects
 				(font
@@ -10584,7 +10998,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C20625731"
+		(property "LCSC" ""
 			(at 142.24 182.88 0)
 			(effects
 				(font
@@ -10611,7 +11025,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://www.lcsc.com/product-detail/Crystals_Abracon-LLC-ABM8-272-T3_C20625731.html"
+		(property "Link" "https://jlcpcb.com/partdetail/AbraconLLC-ABM8_272T3/C20625731"
 			(at 142.24 182.88 0)
 			(effects
 				(font
@@ -10629,7 +11043,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Abracon LLC"
+		(property "Manufacturer" ""
 			(at 142.24 182.88 0)
 			(effects
 				(font
@@ -10640,6 +11054,15 @@
 		)
 		(property "Reviewed" "Yes"
 			(at 142.24 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPN" "C20625731"
+			(at 142.24 182.88 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10829,7 +11252,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 152.7048 20.32 0)
 			(effects
 				(font
@@ -10838,7 +11261,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707269996871680"
 			(at 153.67 24.13 0)
 			(effects
 				(font
@@ -10856,7 +11279,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C160831"
+		(property "LCSC" ""
 			(at 153.67 24.13 0)
 			(effects
 				(font
@@ -10883,7 +11306,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" ""
+		(property "Link" "https://jlcpcb.com/partdetail/1877-CL05B104KO5NNNC/C1525"
 			(at 153.67 24.13 0)
 			(effects
 				(font
@@ -10892,7 +11315,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0201"
+		(property "Package" "0402"
 			(at 153.67 24.13 0)
 			(effects
 				(font
@@ -10901,7 +11324,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" ""
 			(at 153.67 24.13 0)
 			(effects
 				(font
@@ -10911,6 +11334,15 @@
 			)
 		)
 		(property "Reviewed" "Yes"
+			(at 153.67 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPN" "C1525"
 			(at 153.67 24.13 0)
 			(effects
 				(font
@@ -10961,7 +11393,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 252.73 40.9448 0)
 			(effects
 				(font
@@ -10970,7 +11402,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707269996871680"
 			(at 248.92 41.91 0)
 			(effects
 				(font
@@ -10988,7 +11420,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPN" ""
+		(property "JLCPN" "C1525"
 			(at 248.92 41.91 0)
 			(effects
 				(font
@@ -10997,7 +11429,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C160831"
+		(property "LCSC" ""
 			(at 248.92 41.91 0)
 			(effects
 				(font
@@ -11033,7 +11465,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://www.lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_Samsung-Electro-Mechanics-CL03A104KQ3NNNC_C160831.html"
+		(property "Link" "https://jlcpcb.com/partdetail/1877-CL05B104KO5NNNC/C1525"
 			(at 248.92 41.91 0)
 			(effects
 				(font
@@ -11042,7 +11474,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0201"
+		(property "Package" "0402"
 			(at 248.92 41.91 0)
 			(effects
 				(font
@@ -11051,7 +11483,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" ""
 			(at 248.92 41.91 0)
 			(effects
 				(font
@@ -11213,6 +11645,156 @@
 			(project "Flex"
 				(path "/2089e845-13f5-4d9d-90cf-b97608a1d968"
 					(reference "#PWR07")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 27.94 135.89 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5e135f8e-375d-497d-a53f-20cc7c367e18")
+		(property "Reference" "C2"
+			(at 25.4 130.81 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1uF"
+			(at 23.0886 130.81 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 26.9748 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707174974914560"
+			(at 27.94 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 27.94 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPN" "C52923"
+			(at 27.94 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" ""
+			(at 27.94 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRM033R60J105KEA2D"
+			(at 27.94 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" "0.0007"
+			(at 27.94 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Confirmed" "YES"
+			(at 27.94 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Link" "https://jlcpcb.com/partdetail/53938-CL05A105KA5NQNC/C52923"
+			(at 27.94 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "0402"
+			(at 27.94 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 27.94 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Reviewed" "Yes"
+			(at 27.94 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bbd7695b-dfe0-4b26-a124-fca6fa785544")
+		)
+		(pin "2"
+			(uuid "f1bc19b4-547b-410c-bbd4-7aecec747bd1")
+		)
+		(instances
+			(project "OneBoardFlex"
+				(path "/2089e845-13f5-4d9d-90cf-b97608a1d968"
+					(reference "C2")
 					(unit 1)
 				)
 			)
@@ -11446,7 +12028,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 205.74 52.3748 0)
 			(effects
 				(font
@@ -11455,7 +12037,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707174974914560"
 			(at 201.93 53.34 0)
 			(effects
 				(font
@@ -11473,7 +12055,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPN" ""
+		(property "JLCPN" "C52923"
 			(at 201.93 53.34 0)
 			(effects
 				(font
@@ -11482,7 +12064,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76929"
+		(property "LCSC" ""
 			(at 201.93 53.34 0)
 			(effects
 				(font
@@ -11518,7 +12100,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://www.lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_Samsung-Electro-Mechanics-CL03A104KQ3NNNC_C160831.html"
+		(property "Link" "https://jlcpcb.com/partdetail/53938-CL05A105KA5NQNC/C52923"
 			(at 201.93 53.34 0)
 			(effects
 				(font
@@ -11527,7 +12109,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0201"
+		(property "Package" "0402"
 			(at 201.93 53.34 0)
 			(effects
 				(font
@@ -11536,7 +12118,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Murata Electronics"
+		(property "Manufacturer" ""
 			(at 201.93 53.34 0)
 			(effects
 				(font
@@ -11661,7 +12243,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 252.73 49.8348 0)
 			(effects
 				(font
@@ -11670,7 +12252,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707269996871680"
 			(at 248.92 50.8 0)
 			(effects
 				(font
@@ -11688,7 +12270,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPN" ""
+		(property "JLCPN" "C1525"
 			(at 248.92 50.8 0)
 			(effects
 				(font
@@ -11697,7 +12279,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C160831"
+		(property "LCSC" ""
 			(at 248.92 50.8 0)
 			(effects
 				(font
@@ -11733,7 +12315,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://www.lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_Samsung-Electro-Mechanics-CL03A104KQ3NNNC_C160831.html"
+		(property "Link" "https://jlcpcb.com/partdetail/1877-CL05B104KO5NNNC/C1525"
 			(at 248.92 50.8 0)
 			(effects
 				(font
@@ -11742,7 +12324,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0201"
+		(property "Package" "0402"
 			(at 248.92 50.8 0)
 			(effects
 				(font
@@ -11751,7 +12333,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" ""
 			(at 248.92 50.8 0)
 			(effects
 				(font
@@ -11785,8 +12367,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Regulator_Linear:LP2985-2.5")
-		(at 44.45 130.81 0)
+		(lib_id "Regulator_Linear:XC6206PxxxMR")
+		(at 44.45 128.27 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11802,7 +12384,7 @@
 				)
 			)
 		)
-		(property "Value" "RT9013-33GB-MS"
+		(property "Value" "XC6206P332MR-G"
 			(at 44.45 124.46 0)
 			(effects
 				(font
@@ -11810,17 +12392,18 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-3"
 			(at 44.45 122.555 0)
 			(effects
 				(font
 					(size 1.27 1.27)
+					(italic yes)
 				)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://lcsc.com/datasheet/lcsc_datasheet_2307051759_MSKSEMI-RT9013-33GB-MS_C7434207.pdf"
-			(at 44.45 130.81 0)
+		(property "Datasheet" "https://www.torexsemi.com/file/xc6206/XC6206.pdf"
+			(at 44.45 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11828,8 +12411,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "500mA 75dB@(1kHz) Fixed 3.3V Positive 5.5V SOT-23-5 Voltage Regulators - Linear, Low Drop Out (LDO) Regulators ROHS"
-			(at 44.45 130.81 0)
+		(property "Description" "Positive 60-250mA Low Dropout Regulator, Fixed Output, SOT-23"
+			(at 44.45 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11837,8 +12420,35 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C7434207"
-			(at 44.45 130.81 0)
+		(property "LCSC" ""
+			(at 44.45 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPN" "C5446"
+			(at 44.45 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Link" "https://jlcpcb.com/partdetail/TorexSemicon-XC6206P332MRG/C5446"
+			(at 44.45 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "SOT-23-3L"
+			(at 44.45 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11849,17 +12459,11 @@
 		(pin "1"
 			(uuid "bbaed73f-d1fd-4999-957d-cafba2dc059d")
 		)
-		(pin "4"
-			(uuid "a53ce207-ca46-4e39-8acf-81d9b40b4097")
-		)
 		(pin "2"
 			(uuid "e50be639-e161-48bc-a139-7f2f884073a5")
 		)
 		(pin "3"
 			(uuid "73f9c07b-f09a-4d8f-a26e-47520ffc4cab")
-		)
-		(pin "5"
-			(uuid "e60613c5-330f-4c8d-9d6d-43478ef7fa32")
 		)
 		(instances
 			(project ""
@@ -12360,7 +12964,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 240.03 40.9448 0)
 			(effects
 				(font
@@ -12369,7 +12973,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707269996871680"
 			(at 236.22 41.91 0)
 			(effects
 				(font
@@ -12387,7 +12991,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPN" ""
+		(property "JLCPN" "C1525"
 			(at 236.22 41.91 0)
 			(effects
 				(font
@@ -12396,7 +13000,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C160831"
+		(property "LCSC" ""
 			(at 236.22 41.91 0)
 			(effects
 				(font
@@ -12432,7 +13036,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://www.lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_Samsung-Electro-Mechanics-CL03A104KQ3NNNC_C160831.html"
+		(property "Link" "https://jlcpcb.com/partdetail/1877-CL05B104KO5NNNC/C1525"
 			(at 236.22 41.91 0)
 			(effects
 				(font
@@ -12441,7 +13045,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0201"
+		(property "Package" "0402"
 			(at 236.22 41.91 0)
 			(effects
 				(font
@@ -12450,7 +13054,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" ""
 			(at 236.22 41.91 0)
 			(effects
 				(font
@@ -12543,138 +13147,6 @@
 			(project "OneBoardFlex"
 				(path "/2089e845-13f5-4d9d-90cf-b97608a1d968"
 					(reference "#PWR044")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 60.96 135.89 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "a4ae0191-7b23-4528-9e68-28a6913398fa")
-		(property "Reference" "C2"
-			(at 63.881 134.7216 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10uF"
-			(at 63.5 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 61.9252 139.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 60.96 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "10V 10uF X5R ±10%"
-			(at 60.96 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17024"
-			(at 60.96 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "CL21A106KPFNNNE"
-			(at 60.96 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" "0.0050"
-			(at 60.96 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Link" ""
-			(at 60.96 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "0805"
-			(at 60.96 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
-			(at 60.96 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Reviewed" "Yes"
-			(at 60.96 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "692d0b52-543e-497d-ab25-e563c85413e2")
-		)
-		(pin "2"
-			(uuid "4fc2a110-6940-4c00-8529-8fc2cbbe694f")
-		)
-		(instances
-			(project "OneBoardFlex"
-				(path "/2089e845-13f5-4d9d-90cf-b97608a1d968"
-					(reference "C2")
 					(unit 1)
 				)
 			)
@@ -12837,7 +13309,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 156.21 186.182 90)
 			(effects
 				(font
@@ -12846,7 +13318,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579705924167974912"
 			(at 156.21 187.96 0)
 			(effects
 				(font
@@ -12864,7 +13336,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C138165"
+		(property "LCSC" ""
 			(at 156.21 187.96 0)
 			(effects
 				(font
@@ -12900,7 +13372,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://www.lcsc.com/product-detail/Chip-Resistor-Surface-Mount_YAGEO-RC0201FR-071KL_C138165.html"
+		(property "Link" "https://jlcpcb.com/partdetail/12256-0402WGF1001TCE/C11702"
 			(at 156.21 187.96 0)
 			(effects
 				(font
@@ -12909,7 +13381,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0201"
+		(property "Package" "0402"
 			(at 156.21 187.96 0)
 			(effects
 				(font
@@ -12918,7 +13390,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "YAGEO"
+		(property "Manufacturer" ""
 			(at 156.21 187.96 0)
 			(effects
 				(font
@@ -12929,6 +13401,15 @@
 		)
 		(property "Reviewed" "Yes"
 			(at 156.21 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPN" "C11702"
+			(at 156.21 187.96 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13043,7 +13524,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 91.44 27.94 0)
 			(effects
 				(font
@@ -13052,7 +13533,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579705924167974912"
 			(at 91.44 27.94 0)
 			(effects
 				(font
@@ -13070,7 +13551,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C138165"
+		(property "LCSC" ""
 			(at 91.44 27.94 0)
 			(effects
 				(font
@@ -13097,7 +13578,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" ""
+		(property "Link" "https://jlcpcb.com/partdetail/12256-0402WGF1001TCE/C11702"
 			(at 91.44 27.94 0)
 			(effects
 				(font
@@ -13106,7 +13587,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0201"
+		(property "Package" "0402"
 			(at 91.44 27.94 0)
 			(effects
 				(font
@@ -13115,7 +13596,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "YAGEO"
+		(property "Manufacturer" ""
 			(at 91.44 27.94 0)
 			(effects
 				(font
@@ -13126,6 +13607,15 @@
 		)
 		(property "Reviewed" "Yes"
 			(at 91.44 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPN" "C11702"
+			(at 91.44 27.94 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13345,6 +13835,165 @@
 	)
 	(symbol
 		(lib_id "power:GND")
+		(at 273.05 137.16 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bc31bf08-e5a5-447d-a283-f5a781d37b4b")
+		(property "Reference" "#PWR051"
+			(at 279.4 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 277.4442 137.033 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 273.05 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 273.05 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 273.05 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b0844d2a-09f8-461c-b16e-bf99d8526138")
+		)
+		(instances
+			(project "OneBoardFlex"
+				(path "/2089e845-13f5-4d9d-90cf-b97608a1d968"
+					(reference "#PWR051")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 259.08 137.16 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bdd0079f-1d4e-4cd4-a2ee-e65bb2e406ef")
+		(property "Reference" "R7"
+			(at 259.08 132.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "470R"
+			(at 259.08 134.62 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 259.08 138.938 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579705913233424384"
+			(at 259.08 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 259.08 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPN" "C25117"
+			(at 259.08 137.16 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Link" "https://jlcpcb.com/partdetail/25860-0402WGF4700TCE/C25117"
+			(at 259.08 137.16 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "0402"
+			(at 259.08 137.16 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c61a9fd6-7532-435f-83b4-aa8f9bbe0c9d")
+		)
+		(pin "2"
+			(uuid "337ff913-ddc7-43b8-9c75-6cfa5bc12f77")
+		)
+		(instances
+			(project ""
+				(path "/2089e845-13f5-4d9d-90cf-b97608a1d968"
+					(reference "R7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
 		(at 219.71 160.02 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13444,7 +14093,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707286171729920"
 			(at 127 177.8 0)
 			(effects
 				(font
@@ -13462,7 +14111,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C326803"
+		(property "LCSC" ""
 			(at 127 177.8 0)
 			(effects
 				(font
@@ -13498,7 +14147,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://www.lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_YAGEO-CC0402FRNPO9BN150_C326803.html"
+		(property "Link" "https://jlcpcb.com/partdetail/1900-0402CG150J500NT/C1548"
 			(at 127 177.8 0)
 			(effects
 				(font
@@ -13516,7 +14165,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "YAGEO"
+		(property "Manufacturer" ""
 			(at 127 177.8 0)
 			(effects
 				(font
@@ -13526,6 +14175,15 @@
 			)
 		)
 		(property "Reviewed" "Yes"
+			(at 127 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPN" "C1548"
 			(at 127 177.8 0)
 			(effects
 				(font
@@ -13710,7 +14368,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 265.43 49.8348 0)
 			(effects
 				(font
@@ -13719,7 +14377,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707174974914560"
 			(at 261.62 50.8 0)
 			(effects
 				(font
@@ -13737,7 +14395,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPN" ""
+		(property "JLCPN" "C52923"
 			(at 261.62 50.8 0)
 			(effects
 				(font
@@ -13746,7 +14404,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C76929"
+		(property "LCSC" ""
 			(at 261.62 50.8 0)
 			(effects
 				(font
@@ -13782,7 +14440,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://www.lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_Samsung-Electro-Mechanics-CL03A104KQ3NNNC_C160831.html"
+		(property "Link" "https://jlcpcb.com/partdetail/53938-CL05A105KA5NQNC/C52923"
 			(at 261.62 50.8 0)
 			(effects
 				(font
@@ -13791,7 +14449,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0201"
+		(property "Package" "0402"
 			(at 261.62 50.8 0)
 			(effects
 				(font
@@ -13800,7 +14458,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Murata Electronics"
+		(property "Manufacturer" ""
 			(at 261.62 50.8 0)
 			(effects
 				(font
@@ -13850,7 +14508,7 @@
 				)
 			)
 		)
-		(property "Value" "CUS08F30,H3F"
+		(property "Value" "1N5819WS"
 			(at 113.03 67.31 0)
 			(effects
 				(font
@@ -13858,7 +14516,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-323_HandSoldering"
+		(property "Footprint" "Diode_SMD:D_SOD-323"
 			(at 107.95 64.77 0)
 			(effects
 				(font
@@ -13867,7 +14525,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8550723919347523584"
 			(at 107.95 62.23 0)
 			(effects
 				(font
@@ -13894,7 +14552,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C150183"
+		(property "LCSC" ""
 			(at 107.95 69.85 0)
 			(effects
 				(font
@@ -13912,7 +14570,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" ""
+		(property "Link" "https://jlcpcb.com/partdetail/GuangdongHottech-1N5819WS/C191023"
 			(at 107.95 69.85 0)
 			(effects
 				(font
@@ -13930,7 +14588,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "TOSHIBA"
+		(property "Manufacturer" ""
 			(at 107.95 69.85 0)
 			(effects
 				(font
@@ -13940,6 +14598,15 @@
 			)
 		)
 		(property "Reviewed" "Yes"
+			(at 107.95 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPN" "C191023"
 			(at 107.95 69.85 0)
 			(effects
 				(font
@@ -14096,138 +14763,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 27.94 135.89 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "d336a63d-253a-43d6-b360-9eb4c6d9f166")
-		(property "Reference" "C1"
-			(at 25.4 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10uF"
-			(at 27.94 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 26.9748 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 27.94 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "10V 10uF X5R ±10%"
-			(at 27.94 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C17024"
-			(at 27.94 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "CL21A106KPFNNNE"
-			(at 27.94 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" "0.0050"
-			(at 27.94 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Link" ""
-			(at 27.94 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "0805"
-			(at 27.94 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
-			(at 27.94 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Reviewed" "Yes"
-			(at 27.94 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "56d5da72-9bb8-4a34-ab59-fa6c9d7842f0")
-		)
-		(pin "2"
-			(uuid "088b28fc-80da-4fa3-b99f-a1a036e5514e")
-		)
-		(instances
-			(project "OneBoardFlex"
-				(path "/2089e845-13f5-4d9d-90cf-b97608a1d968"
-					(reference "C1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 148.59 182.88 0)
 		(unit 1)
@@ -14319,7 +14854,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 252.73 58.7248 0)
 			(effects
 				(font
@@ -14328,7 +14863,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707269996871680"
 			(at 248.92 59.69 0)
 			(effects
 				(font
@@ -14346,7 +14881,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPN" ""
+		(property "JLCPN" "C1525"
 			(at 248.92 59.69 0)
 			(effects
 				(font
@@ -14355,7 +14890,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C160831"
+		(property "LCSC" ""
 			(at 248.92 59.69 0)
 			(effects
 				(font
@@ -14391,7 +14926,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://www.lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_Samsung-Electro-Mechanics-CL03A104KQ3NNNC_C160831.html"
+		(property "Link" "https://jlcpcb.com/partdetail/1877-CL05B104KO5NNNC/C1525"
 			(at 248.92 59.69 0)
 			(effects
 				(font
@@ -14400,7 +14935,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0201"
+		(property "Package" "0402"
 			(at 248.92 59.69 0)
 			(effects
 				(font
@@ -14409,7 +14944,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" ""
 			(at 248.92 59.69 0)
 			(effects
 				(font
@@ -14536,7 +15071,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 240.03 58.7248 0)
 			(effects
 				(font
@@ -14545,7 +15080,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707269996871680"
 			(at 236.22 59.69 0)
 			(effects
 				(font
@@ -14563,7 +15098,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPN" ""
+		(property "JLCPN" "C1525"
 			(at 236.22 59.69 0)
 			(effects
 				(font
@@ -14572,7 +15107,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C160831"
+		(property "LCSC" ""
 			(at 236.22 59.69 0)
 			(effects
 				(font
@@ -14608,7 +15143,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://www.lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_Murata-Electronics-GRM033R60J105KEA2D_C76929.html"
+		(property "Link" "https://jlcpcb.com/partdetail/1877-CL05B104KO5NNNC/C1525"
 			(at 236.22 59.69 0)
 			(effects
 				(font
@@ -14617,7 +15152,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0201"
+		(property "Package" "0402"
 			(at 236.22 59.69 0)
 			(effects
 				(font
@@ -14626,7 +15161,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" ""
 			(at 236.22 59.69 0)
 			(effects
 				(font
@@ -14731,7 +15266,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "ddaf2ea4-9eec-4a86-ad8e-a0043d88178f")
 		(property "Reference" "U2"
@@ -15204,7 +15739,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 265.43 40.9448 0)
 			(effects
 				(font
@@ -15213,7 +15748,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579707269996871680"
 			(at 261.62 41.91 0)
 			(effects
 				(font
@@ -15231,7 +15766,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPN" ""
+		(property "JLCPN" "C1525"
 			(at 261.62 41.91 0)
 			(effects
 				(font
@@ -15240,7 +15775,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C160831"
+		(property "LCSC" ""
 			(at 261.62 41.91 0)
 			(effects
 				(font
@@ -15276,7 +15811,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://www.lcsc.com/product-detail/Multilayer-Ceramic-Capacitors-MLCC-SMD-SMT_Samsung-Electro-Mechanics-CL03A104KQ3NNNC_C160831.html"
+		(property "Link" "https://jlcpcb.com/partdetail/1877-CL05B104KO5NNNC/C1525"
 			(at 261.62 41.91 0)
 			(effects
 				(font
@@ -15285,7 +15820,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0201"
+		(property "Package" "0402"
 			(at 261.62 41.91 0)
 			(effects
 				(font
@@ -15294,7 +15829,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
+		(property "Manufacturer" ""
 			(at 261.62 41.91 0)
 			(effects
 				(font
@@ -15412,7 +15947,7 @@
 				)
 			)
 		)
-		(property "Value" "W25Q16JVUXIQ"
+		(property "Value" "W25Q128JVSIQ"
 			(at 124.46 22.86 0)
 			(effects
 				(font
@@ -15420,7 +15955,7 @@
 				)
 			)
 		)
-		(property "Footprint" "hhl:USON-8-EP(2x3)"
+		(property "Footprint" "Package_SO:SOIC-8_5.3x5.3mm_P1.27mm"
 			(at 96.52 27.94 0)
 			(effects
 				(font
@@ -15430,7 +15965,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://lcsc.com/datasheet/lcsc_datasheet_2411121100_Winbond-W25Q16JVUXIQ_C2843335.pdf"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8560111703904829441"
 			(at 96.52 27.94 0)
 			(effects
 				(font
@@ -15448,7 +15983,34 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2843335"
+		(property "LCSC" ""
+			(at 96.52 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPN" "C97521"
+			(at 96.52 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Link" "https://jlcpcb.com/partdetail/WinbondElec-W25Q128JVSIQ/C97521"
+			(at 96.52 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "SOIC-8-208mil"
 			(at 96.52 27.94 0)
 			(effects
 				(font
@@ -15595,7 +16157,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://lcsc.com/datasheet/lcsc_datasheet_2411221125_G-Switch-GT-USB-7010ASV_C2988369.pdf"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8589042191104270336"
 			(at 91.44 85.09 0)
 			(effects
 				(font
@@ -15613,7 +16175,34 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2988369"
+		(property "LCSC" ""
+			(at 87.63 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPN" "C2988369"
+			(at 87.63 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Link" "https://jlcpcb.com/partdetail/GSwitch-GT_USB7010ASV/C2988369"
+			(at 87.63 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" "SMD"
 			(at 87.63 85.09 0)
 			(effects
 				(font
