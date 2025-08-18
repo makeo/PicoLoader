@@ -1,4 +1,4 @@
-### Footprint positions - created on 2025-08-18T12:20:21-0700 ###
+### Footprint positions - created on 2025-08-18T16:44:03-0700 ###
 ### Printed by KiCad version 9.0.3
 ## Unit = mm, Angle = deg.
 ## Side : top
@@ -24,8 +24,8 @@ R1        1k              R_0402_1005Metric                     183.6928   -78.9
 R2        5.1k            R_0402_1005Metric                     194.5640   -76.0222    0.0000  top
 R3        5.1k            R_0402_1005Metric                     190.6016   -76.0222  180.0000  top
 R4        1k              R_0402_1005Metric                     189.0776   -96.0628  -135.0000  top
-R5        27R             R_0402_1005Metric                     198.5772   -87.5284  -135.0000  top
-R6        27R             R_0402_1005Metric                     199.2884   -88.2396  -135.0000  top
+R5        22R             R_0402_1005Metric                     198.5772   -87.5284  -135.0000  top
+R6        22R             R_0402_1005Metric                     199.2884   -88.2396  -135.0000  top
 R7        470R            R_0402_1005Metric                     196.9008   -95.7072  -45.0000  top
 SW1       TS-1187A-B-A-B  TS-1187A-C-E-B                        183.6420   -74.2115   90.0000  top
 U1        XC6206P332MR-G  SOT-23-3                              203.3778   -74.2583  180.0000  top

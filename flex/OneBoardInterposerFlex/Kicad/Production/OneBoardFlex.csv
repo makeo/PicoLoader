@@ -7,7 +7,7 @@
 "J1","GT-USB-7010ASV","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8589042191104270336","GamecubeConnectors:USB_C_Receptacle_GT-USB-7010","SMD","1","","C2988369","https://jlcpcb.com/partdetail/GSwitch-GT_USB7010ASV/C2988369"
 "R1,R4","1k","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579705924167974912","Resistor_SMD:R_0402_1005Metric","0402","2","","C11702","https://jlcpcb.com/partdetail/12256-0402WGF1001TCE/C11702"
 "R2,R3","5.1k","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579706036003409920","Resistor_SMD:R_0402_1005Metric","0402","2","","C25905","https://jlcpcb.com/partdetail/26648-0402WGF5101TCE/C25905"
-"R5,R6","27R","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588899757724995584","Resistor_SMD:R_0402_1005Metric","0402","2","","C138021","https://jlcpcb.com/partdetail/YAGEO-RC0402FR0727RL/C138021"
+"R5,R6","22R","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579705910383595520","Resistor_SMD:R_0402_1005Metric","0402","2","","C25092","https://jlcpcb.com/partdetail/25835-0402WGF220JTCE/C25092"
 "R7","470R","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579705913233424384","Resistor_SMD:R_0402_1005Metric","0402","1","","C25117","https://jlcpcb.com/partdetail/25860-0402WGF4700TCE/C25117"
 "SW1","TS-1187A-B-A-B","https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8550724022091735041","hhl:TS-1187A-C-E-B","SMD","1","","C318884","https://jlcpcb.com/partdetail/XKBConnection-TS_1187A_B_AB/C318884"
 "U1","XC6206P332MR-G","https://www.torexsemi.com/file/xc6206/XC6206.pdf","Package_TO_SOT_SMD:SOT-23-3","SOT-23-3L","1","","C5446","https://jlcpcb.com/partdetail/TorexSemicon-XC6206P332MRG/C5446"

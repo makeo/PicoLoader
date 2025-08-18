@@ -8563,7 +8563,7 @@
 				)
 			)
 		)
-		(property "Value" "27R"
+		(property "Value" "22R"
 			(at 189.23 86.36 90)
 			(effects
 				(font
@@ -8580,7 +8580,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588899757724995584"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579705910383595520"
 			(at 189.23 83.82 0)
 			(effects
 				(font
@@ -8598,7 +8598,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPN" "C138021"
+		(property "JLCPN" "C25092"
 			(at 189.23 83.82 0)
 			(effects
 				(font
@@ -8643,7 +8643,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://jlcpcb.com/partdetail/YAGEO-RC0402FR0727RL/C138021"
+		(property "Link" "https://jlcpcb.com/partdetail/25835-0402WGF220JTCE/C25092"
 			(at 189.23 83.82 0)
 			(effects
 				(font
@@ -9076,7 +9076,7 @@
 				)
 			)
 		)
-		(property "Value" "27R"
+		(property "Value" "22R"
 			(at 189.23 78.74 90)
 			(effects
 				(font
@@ -9093,7 +9093,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8588899757724995584"
+		(property "Datasheet" "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/8579705910383595520"
 			(at 189.23 81.28 0)
 			(effects
 				(font
@@ -9111,7 +9111,7 @@
 				(hide yes)
 			)
 		)
-		(property "JLCPN" "C138021"
+		(property "JLCPN" "C25092"
 			(at 189.23 81.28 0)
 			(effects
 				(font
@@ -9156,7 +9156,7 @@
 				(hide yes)
 			)
 		)
-		(property "Link" "https://jlcpcb.com/partdetail/YAGEO-RC0402FR0727RL/C138021"
+		(property "Link" "https://jlcpcb.com/partdetail/25835-0402WGF220JTCE/C25092"
 			(at 189.23 81.28 0)
 			(effects
 				(font
