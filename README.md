@@ -23,6 +23,7 @@ However, it is not a full optical drive emulator and only allows executing small
 
 ## Planned Features
 - Solder-free module
+- Pico 2 support
 
 ## Installation & Documentation
 > [!IMPORTANT]
