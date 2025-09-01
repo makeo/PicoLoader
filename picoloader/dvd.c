@@ -16,6 +16,8 @@ static uint32_t last_error = 0;
 
 static const uint8_t* disk_data;
 
+static uint32_t flash_capacity = 0;
+#define XIP_MAX (XIP_BASE + flash_capacity)
 
 // include header data for dol files
 asm("\
@@ -28,7 +30,7 @@ extern uint8_t data_header[];
 // start of the actual payload
 extern uint8_t data_payload[];
 
-
+uint32_t get_flash_capacity();
 bool dvd_is_valid_dol(const uint8_t* dol);
 
 void dvd_init()
@@ -36,6 +38,8 @@ void dvd_init()
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
     led_state = 1;
+
+    flash_capacity = get_flash_capacity();
 
     dvd_drv_init();
 
@@ -55,6 +59,13 @@ void dvd_init()
         dvd_drv_set_cover(true);
     }
     led_state = 2;
+}
+
+uint32_t get_flash_capacity() {
+    uint8_t txbuf[4] = {0x9f};
+    uint8_t rxbuf[4] = {0};
+    flash_do_cmd(txbuf, rxbuf, 4);
+    return 1 << rxbuf[3];
 }
 
 bool dvd_is_valid_dol(const uint8_t* dol) {
@@ -91,7 +102,7 @@ bool dvd_is_valid_dol(const uint8_t* dol) {
         return false;
 
     // reject if too small or too big
-    if(dol_size < 0x100 || ((uint32_t)dol + dol_size) > XIP_NOALLOC_BASE)
+    if(dol_size < 0x100 || ((uint32_t)dol + dol_size) > XIP_MAX)
         return false;
 
     return true;
@@ -121,7 +132,7 @@ void dvd_request(uint8_t *req)
                 uint32_t len = __builtin_bswap32(*(uint32_t*)&req[8]) & ~0x1F;
 
                 const uint8_t* dat = &disk_data[addr];
-                if ((uint32_t)dat + len > XIP_NOALLOC_BASE) {
+                if ((uint32_t)dat + len > XIP_MAX) {
                     dvd_drv_set_error();
                     last_error = 0x056300; // lead-out
                 } else {

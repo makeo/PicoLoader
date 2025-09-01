@@ -215,7 +215,7 @@ void dvd_drv_init_pio() {
 void dvd_drv_clear_state() {
     // reset recv pio
     pio_sm_set_enabled(pio0, PIO_RECV_SM, false);
-    pio_sm_exec(pio0, PIO_RECV_SM, pio_encode_mov(pio_exec_mov, pio_y));
+    pio_sm_exec(pio0, PIO_RECV_SM, pio_encode_mov(pio_pc, pio_y));
     pio_sm_clear_fifos(pio0, PIO_RECV_SM);
     pio_sm_exec(pio0, PIO_RECV_SM, pio_encode_mov(pio_isr, pio_null));
     pio_sm_set_enabled(pio0, PIO_RECV_SM, true);
@@ -226,12 +226,12 @@ void dvd_drv_clear_state() {
     // reset send pio
     pio_sm_set_enabled(pio0, PIO_SEND_SM, false);
     pio_sm_clear_fifos(pio0, PIO_SEND_SM);
-    pio_sm_exec(pio0, PIO_SEND_SM, pio_encode_mov(pio_exec_mov, pio_y));
+    pio_sm_exec(pio0, PIO_SEND_SM, pio_encode_mov(pio_pc, pio_y));
     pio_sm_restart(pio0, PIO_SEND_SM);
     pio_sm_set_enabled(pio0, PIO_SEND_SM, true);
 
     // reset dir sm
-    pio_sm_exec(pio0, PIO_DIR_SM, pio_encode_mov(pio_exec_mov, pio_y));
+    pio_sm_exec(pio0, PIO_DIR_SM, pio_encode_mov(pio_pc, pio_y));
 }
 
 void dvd_drv_gpio_irq(void) {
@@ -286,7 +286,7 @@ void dvd_drv_dir_irq_out(void) {
     }    
 
     // reset recv pio
-    pio_sm_exec(pio0, PIO_RECV_SM, pio_encode_mov(pio_exec_mov, pio_y));
+    pio_sm_exec(pio0, PIO_RECV_SM, pio_encode_mov(pio_pc, pio_y));
     pio_sm_clear_fifos(pio0, PIO_RECV_SM);
     pio_sm_exec(pio0, PIO_RECV_SM, pio_encode_mov(pio_isr, pio_null));
 
@@ -300,12 +300,12 @@ void dvd_drv_dir_irq_in(void) {
 
     // reset send pio
     pio_sm_clear_fifos(pio0, PIO_SEND_SM);
-    pio_sm_exec(pio0, PIO_SEND_SM, pio_encode_mov(pio_exec_mov, pio_y));
+    pio_sm_exec(pio0, PIO_SEND_SM, pio_encode_mov(pio_pc, pio_y));
     pio_sm_restart(pio0, PIO_SEND_SM);
 
     pio_sm_set_enabled(pio0, PIO_RECV_SM, true);
 
-    pio_sm_exec(pio0, PIO_DIR_SM, pio_encode_mov(pio_exec_mov, pio_y));
+    pio_sm_exec(pio0, PIO_DIR_SM, pio_encode_mov(pio_pc, pio_y));
     pio_interrupt_clear(pio0, 0);
 }
 
@@ -335,7 +335,7 @@ bool dvd_drv_enable_passthrough()
     irq_set_enabled(PIO0_IRQ_1, false);
 
     // change data lines to input
-    pio_sm_exec(pio0, PIO_DIR_SM, pio_encode_mov(pio_exec_mov, pio_x));
+    pio_sm_exec(pio0, PIO_DIR_SM, pio_encode_mov(pio_pc, pio_x));
 
     pio_sm_set_enabled(pio0, PIO_SEND_SM, false);
     pio_sm_set_enabled(pio0, PIO_RECV_SM, false);
