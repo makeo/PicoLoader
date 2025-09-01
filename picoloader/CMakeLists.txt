@@ -36,7 +36,7 @@ pico_set_program_description(picoloader "ODE-based modchip for Nintendo GameCube
 pico_set_program_url(picoloader "https://github.com/makeo/PicoLoader")
 
 set(PROGRAM_VERSION_MAJOR "1")
-set(PROGRAM_VERSION_MINOR "1")
+set(PROGRAM_VERSION_MINOR "2")
 set(PROGRAM_VERSION "${PROGRAM_VERSION_MAJOR}.${PROGRAM_VERSION_MINOR}")
 pico_set_program_version(picoloader "${PROGRAM_VERSION}")
 
