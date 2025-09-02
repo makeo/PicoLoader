@@ -272,7 +272,7 @@
     const UF2_MAGIC_END = 0x0AB16F30;
     const UF2_BLOCK_SIZE = 512;
     const UF2_PAYLOAD_SIZE = 256;
-    const UF2_FAMILY_ID = 0xe48bff56;
+    const UF2_FAMILY_IDS = [ 0xe48bff56, 0xe48bff57 ];
     const UF2_BASE_ADDR = 0x10031000;
     const MAX_FILE_SIZE = 16576512;
 
@@ -332,15 +332,8 @@
       return true;
     }
 
-    function payloadToUf2(arrayBuffer, fileName) {
+    function payloadToUf2(arrayBuffer, familyId) {
       const data = new Uint8Array(arrayBuffer);
-      
-      if (fileName && fileName.toLowerCase().endsWith('.dol')) {
-        if (!isValidDol(data)) {
-          throw new Error('Invalid .dol file: File is not bootable by ipl or has invalid structure');
-        }
-        log('File appears to be a valid .dol.');
-      }
       
       const numBlocks = Math.ceil(data.length / UF2_PAYLOAD_SIZE);
       const uf2 = new Uint8Array(numBlocks * UF2_BLOCK_SIZE);
@@ -357,7 +350,7 @@
         view.setUint32(16, UF2_PAYLOAD_SIZE, true);
         view.setUint32(20, blockNum, true);
         view.setUint32(24, numBlocks, true);
-        view.setUint32(28, UF2_FAMILY_ID, true);
+        view.setUint32(28, familyId, true);
         uf2.set(payload, ptr + 32);
         for (let i = payload.length; i < UF2_PAYLOAD_SIZE; ++i) {
           uf2[ptr + 32 + i] = 0;
@@ -400,16 +393,48 @@
       return result;
     }
 
-    function combineUf2(uf2Data1, uf2Data2) {
-      const blocksArr = [uf2Data1, uf2Data2].map(data => parseUf2Blocks(data.buffer));
-      const totalBlocks = blocksArr[0].length + blocksArr[1].length;
-      const blocks1Rewritten = rewriteBlockIndices(blocksArr[0], 0, totalBlocks);
-      const blocks2Rewritten = rewriteBlockIndices(blocksArr[1], blocksArr[0].length, totalBlocks);
-      const allBlocks = blocks1Rewritten.concat(blocks2Rewritten);
-      const finalU8 = new Uint8Array(allBlocks.length * UF2_BLOCK_SIZE);
-      allBlocks.forEach((block, i) => {
+    async function combineUf2(uf2s) {
+      const blocksArr = uf2s.map(uf2Data => parseUf2Blocks(uf2Data.buffer));
+      const allBlocks = blocksArr.reduce((acc, blocks) => acc.concat(blocks), []);
+      
+      const familyGroups = new Map();
+      
+      allBlocks.forEach(block => {
+        const dv = new DataView(block.buffer, block.byteOffset, block.byteLength);
+        const familyId = dv.getUint32(28, true); // familyID
+        
+        if (!familyGroups.has(familyId)) {
+          familyGroups.set(familyId, []);
+        }
+        familyGroups.get(familyId).push(block);
+      });
+      
+      const reindexedBlocks = [];
+      const finalBlocks = [];
+      
+      familyGroups.forEach((blocks, familyId) => {
+        const totalBlocksInFamily = blocks.length;
+        blocks.forEach((block, index) => {
+          const newBlock = block.slice();
+          const dv = new DataView(newBlock.buffer, newBlock.byteOffset, newBlock.byteLength);
+          dv.setUint32(20, index, true); // blockNo
+          dv.setUint32(24, totalBlocksInFamily, true); // numBlocks
+          
+          if (index === totalBlocksInFamily - 1) {
+            finalBlocks.push(newBlock);
+          } else {
+            reindexedBlocks.push(newBlock);
+          }
+        });
+      });
+      
+      reindexedBlocks.push(...finalBlocks);
+      
+      const finalU8 = new Uint8Array(reindexedBlocks.length * UF2_BLOCK_SIZE);
+      reindexedBlocks.forEach((block, i) => {
         finalU8.set(block, i * UF2_BLOCK_SIZE);
       });
+      
       return finalU8;
     }
 
@@ -501,17 +526,29 @@
           reader.readAsArrayBuffer(selectedFile);
         });
         
+        if (selectedFile.name.toLowerCase().endsWith('.dol')) {
+          const data = new Uint8Array(fileArrayBuffer);
+          if (!isValidDol(data)) {
+            throw new Error('Invalid .dol file: File is not bootable by ipl or has invalid structure');
+          }
+          log('File appears to be a valid .dol.');
+        }
+        
         log('Converting to UF2...');
-        const payloadUf2 = payloadToUf2(fileArrayBuffer, selectedFile.name);
-        
-        let finalUf2 = payloadUf2;
-        
+        const uf2s = [];
+
         if (includeFirmware) {
           log('Downloading firmware...');
-          const firmwareUf2 = await downloadFirmware();
-          log('Combining firmware with payload...');
-          finalUf2 = combineUf2(firmwareUf2, payloadUf2);
+          uf2s.push(await downloadFirmware());
         }
+
+        for (const familyId of UF2_FAMILY_IDS) {
+          uf2s.push(payloadToUf2(fileArrayBuffer, familyId));
+        }
+        
+        log('Combining UF2\'s...');
+        let finalUf2 = await combineUf2(uf2s);
+
         
         const blob = new Blob([finalUf2], {type: 'application/octet-stream'});
         const url = URL.createObjectURL(blob);
