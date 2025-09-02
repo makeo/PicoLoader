@@ -11,7 +11,7 @@ However, it is not a full optical drive emulator and only allows executing small
 
 ## Features
 - Open source
-- Cheap and easy to get components (Raspberry Pi Pico + Flex PCB + Diode)
+- Cheap and easy to get components (Raspberry Pi Pico/Pico 2 + Flex PCB + Diode)
 - You can keep the disk drive
 - Simple to boot most homebrew apps using an [online converter](https://makeo.github.io/PicoLoader/converter/)
 - No soldering directly to the GameCube
@@ -23,7 +23,6 @@ However, it is not a full optical drive emulator and only allows executing small
 
 ## Planned Features
 - Solder-free module
-- Pico 2 support
 - Panasonic Q Flex
 
 ## Installation & Documentation
