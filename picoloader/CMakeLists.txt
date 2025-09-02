@@ -73,5 +73,8 @@ pico_generate_pio_header(picoloader ${CMAKE_CURRENT_LIST_DIR}/drive_interface.pi
 # Add data memory regions
 target_link_options(picoloader PRIVATE -T${CMAKE_CURRENT_LIST_DIR}/memmap_data.ld)
 
+# Disable fix for E10 because we do not have partition tables and it causes issues with universal uf2's
+set(PICO_RP2350_A2_SUPPORTED 0)
+
 pico_add_extra_outputs(picoloader)
 
