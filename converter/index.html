@@ -379,20 +379,6 @@
       return blocks;
     }
 
-    function rewriteBlockIndices(blocks, startBlockIndex, totalBlocks) {
-      const result = [];
-      let blockIndex = startBlockIndex;
-      for (const block of blocks) {
-        const newBlock = block.slice();
-        const dv = new DataView(newBlock.buffer, newBlock.byteOffset, newBlock.byteLength);
-        dv.setUint32(20, blockIndex, true);
-        dv.setUint32(24, totalBlocks, true);
-        result.push(newBlock);
-        blockIndex++;
-      }
-      return result;
-    }
-
     async function combineUf2(uf2s) {
       const blocksArr = uf2s.map(uf2Data => parseUf2Blocks(uf2Data.buffer));
       const allBlocks = blocksArr.reduce((acc, blocks) => acc.concat(blocks), []);
