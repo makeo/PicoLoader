@@ -19,11 +19,10 @@ However, it is not a full optical drive emulator and only allows executing small
 - No permanent modifications to the GameCube
 - Running Pico at 200Mhz for better compatibility with clone boards
 - Easy to remove
-- Alternative [low-profile install option](https://github.com/makeo/PicoLoader/wiki/4.-Advanced-Section#low-profile-install-option)
+- Alternative install options: [Panasonic Q](https://github.com/makeo/PicoLoader/wiki/4.-Advanced-Section#panasonic-q-install-option), [low-profile](https://github.com/makeo/PicoLoader/wiki/4.-Advanced-Section#low-profile-install-option)
 
 ## Planned Features
 - Solder-free module
-- Panasonic Q Flex
 
 ## Installation & Documentation
 > [!IMPORTANT]
