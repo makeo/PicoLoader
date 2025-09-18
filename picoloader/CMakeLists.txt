@@ -29,6 +29,9 @@ set(PICO_FLASH_SIZE_BYTES 131072)
 
 pico_sdk_init()
 
+# Improve compatibility with other crystals
+add_compile_definitions(PICO_XOSC_STARTUP_DELAY_MULTIPLIER=64)
+
 add_executable(picoloader picoloader.c)
 
 pico_set_program_name(picoloader "picoloader")
