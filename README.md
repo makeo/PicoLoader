@@ -11,18 +11,29 @@ However, it is not a full optical drive emulator and only allows executing small
 
 ## Features
 - Open source
-- Cheap and easy to get components (Raspberry Pi Pico/Pico 2 + Flex PCB + Diode)
 - You can keep the disk drive
 - Simple to boot most homebrew apps using an [online converter](https://makeo.github.io/PicoLoader/converter/)
+- No permanent modifications to the GameCube
+- Easy to remove
+- Running Pico at 200Mhz for better compatibility with clone boards
+
+#### Soldered Variant
+- Cheap and easy to get components (Raspberry Pi Pico/Pico 2 + Flex PCB + Diode)
+- Readily available
 - No soldering directly to the GameCube
 - Easy soldering
-- No permanent modifications to the GameCube
-- Running Pico at 200Mhz for better compatibility with clone boards
-- Easy to remove
 - Alternative install options: [Panasonic Q](https://github.com/makeo/PicoLoader/wiki/4.-Advanced-Section#panasonic-q-install-option), [low-profile](https://github.com/makeo/PicoLoader/wiki/4.-Advanced-Section#low-profile-install-option)
 
+#### Solderless Variant
+- No soldering
+- Easily replaceable flex PCB
+- Pre-programmed with PicoLoader firmware and [Swiss](https://github.com/emukidid/swiss-gc)
+> [!TIP]
+> You can buy the solderless variant from [store.makstech.io](https://store.makstech.io/).\
+> However, there is currently no shipping to the USA until the German postal service adjusts to the new tariff situation.
+
 ## Planned Features
-- Solder-free module
+*cricked sound*
 
 ## Installation & Documentation
 > [!IMPORTANT]
@@ -49,7 +60,7 @@ Get started by looking at the 📖[Wiki](https://github.com/makeo/PicoLoader/wik
 ## Special Thanks
 - [silversteel](https://github.com/silverstee1) for his help, especially for making the flex PCBs and mounts
 - [TeamOffBroadway](https://github.com/OffBroadway) for the amazing idea to use a flex PCB to intercept the drive signals
-- [Extrems](https://github.com/Extrems), [emukidid](https://github.com/emukidid) and everyone involved in creating swiss
+- [Extrems](https://github.com/Extrems), [emukidid](https://github.com/emukidid) and everyone involved in creating Swiss
 - [novenary (9ary)](https://github.com/9ary) for gekkoboot
 
 ## Acknowledgements
