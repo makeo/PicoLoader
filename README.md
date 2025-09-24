@@ -14,6 +14,7 @@ However, it is not a full optical drive emulator and only allows executing small
 - You can keep the disk drive
 - Simple to boot most homebrew apps using an [online converter](https://makeo.github.io/PicoLoader/converter/)
 - No permanent modifications to the GameCube
+- [3D printed plug](https://github.com/makeo/PicoLoader/raw/refs/heads/main/mount/Drive_PlugV1.1.stl) for installs without a disk drive 
 - Easy to remove
 - Running Pico at 200Mhz for better compatibility with clone boards
 
@@ -29,7 +30,7 @@ However, it is not a full optical drive emulator and only allows executing small
 - Easily replaceable flex PCB
 - Pre-programmed with PicoLoader firmware and [Swiss](https://github.com/emukidid/swiss-gc)
 > [!TIP]
-> You can buy the solderless variant from [store.makstech.io](https://store.makstech.io/).\
+> You can buy the solderless and normal variant from [store.makstech.io](https://store.makstech.io/).\
 > However, there is currently no shipping to the USA until the German postal service adjusts to the new tariff situation.
 
 ## Planned Features
