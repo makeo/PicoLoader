@@ -8,6 +8,7 @@ Join the [Discord server](https://discord.gg/YtA9aU3BKZ) to get support and disc
 This mod works by emulating a disk drive during boot, executing a homebrew app, and afterwards re-enabling the disk drive.\
 This is achieved using a flex PCB similar to FlippyDrive.
 However, it is not a full optical drive emulator and only allows executing small homebrew apps (e.g. [swiss](https://github.com/emukidid/swiss-gc)) from flash just like PicoBoot.
+To access files on an SD card, you need an SDGecko, SD2SP2, or similar adapter, which can be purchased separately.
 
 ## Features
 - Open source
