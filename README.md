@@ -31,8 +31,7 @@ To access files on an SD card, you need an SDGecko, SD2SP2, or similar adapter, 
 - Easily replaceable flex PCB
 - Pre-programmed with PicoLoader firmware and [Swiss](https://github.com/emukidid/swiss-gc)
 > [!TIP]
-> You can buy the solderless and normal variant from [store.makstech.io](https://store.makstech.io/).\
-> However, there is currently no shipping to the USA until the German postal service adjusts to the new tariff situation.
+> You can buy the solderless and normal variant from [store.makstech.io](https://store.makstech.io/).
 
 ## Planned Features
 *cricked sound*
