@@ -34,7 +34,7 @@ To access files on an SD card, you need an SDGecko, SD2SP2, or similar adapter, 
 > You can buy the solderless and normal variant from [store.makstech.io](https://store.makstech.io/).
 
 ## Planned Features
-*cricked sound*
+*cricket sound*
 
 ## Installation & Documentation
 > [!IMPORTANT]
